@@ -1,6 +1,6 @@
 #! /bin/bash
 
-##Ignora esto jajaja es para actualizar el repositorio :)
+##Use this script for updating and pulling to a git repositorie
 
 git add --all
 echo ""
