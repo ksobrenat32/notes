@@ -1,6 +1,0 @@
-To delete all containers including its volumes use,
-	podman rm -vf $(podman ps -a -q)
-
-To delete all the images:
-	podman rmi -f $(podman images -a -q)
-

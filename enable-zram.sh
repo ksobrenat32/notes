@@ -11,7 +11,7 @@ function use-root () {
 }
 
 function s-size () {
-	read -p "Select a size" FSIZE
+	echo "Select a size"
     select option in "512M" "1024M" "2048M" "3072M" "4096M" ; do
         case $option in
         512M ) echo 'KERNEL=="zram0", ATTR{disksize}="512M",TAG+="systemd"' >> /etc/udev/rules.d/99-zram.rules ; break;;

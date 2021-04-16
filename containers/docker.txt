@@ -1,0 +1,11 @@
+To delete all containers including its volumes use,
+	docker/podman rm -vf $(docker/podman ps -a -q)
+
+To delete all the images:
+	docker/podman rmi -f $(docker/podman images -a -q)
+	
+Building images
+	docker build -t name:version .
+	
+Watching logs
+	docker logs --tail 50 --follow --timestamps name-of-the-container
