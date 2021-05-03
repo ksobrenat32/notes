@@ -5,7 +5,7 @@ To delete all the images:
 	docker/podman rmi -f $(docker/podman images -a -q)
 	
 Building images
-	docker build -t name:version .
+	docker/podman build -t name:version .
 	
 Watching logs
-	docker logs --tail 50 --follow --timestamps name-of-the-container
+	docker/podman logs --tail 50 --follow --timestamps name-of-the-container
