@@ -11,11 +11,12 @@ Watching logs
 	docker/podman logs --tail 50 --follow --timestamps name-of-the-container
 	
 Creating systemd services with podman
-	1. podman generate systemd --files --name --restart-policy=always name_of_pod_or_container
+	--- For running this as a user you need 'sudo loginctl enable-linger <username>'
+	1. podman generate systemd --files --name --restart-policy=always <name_of_pod_or_container>
 	2. mv all generated files to .config/systemd/user/
-	3. systemctl --user enable name_of_pod.service
-	4. systemctl --user start name_of_pod.service
-	5. systemctl --user is-enabled name_of_pod.service
+	3. systemctl --user enable <name_of_pod.service>
+	4. systemctl --user start <name_of_pod.service>
+	5. systemctl --user is-enabled <name_of_pod.service>
 	--- Useful links:
 		http://docs.podman.io/en/latest/markdown/podman-generate-systemd.1.html
 
