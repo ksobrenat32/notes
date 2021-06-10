@@ -1,0 +1,2 @@
+To delete all comments
+	:g/^\s*#/d
