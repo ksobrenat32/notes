@@ -1,0 +1,20 @@
+
+# ksobrenat32's sshd configuration file
+
+# Specify a port
+# Port 22
+
+PermitRootLogin no
+MaxAuthTries 5
+MaxSessions 5
+PasswordAuthentication no
+PermitEmptyPasswords no
+UsePAM yes
+X11Forwarding no
+PrintMotd no
+AcceptEnv LANG LC_*
+Subsystem	sftp	/usr/lib/openssh/sftp-server
+PubkeyAuthentication yes
+
+# Specify your user
+# AllowUsers username
