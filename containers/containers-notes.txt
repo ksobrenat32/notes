@@ -22,3 +22,9 @@ Creating systemd services with podman
 
 Building image in podman with docker format
 	podman build -t name:version --format docker .
+
+If using a system with selinux and podman
+	When mounting volumes use :z at the end. Example:
+		podman run -it --rm -v ./thing/:/thing:z alpine sh
+	or in a docker-compose.yml
+		- ./postgresdata:/var/lib/postgresql/data:z
