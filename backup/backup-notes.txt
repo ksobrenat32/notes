@@ -18,3 +18,10 @@ Useful things for my backups
 ----- sha256
 	sha256sum /path/to/file > /path/to/file.sha256
 		- Generate a sha256 hash from the file
+
+----- rsync
+	rsync -aruvh --ignore-existing --info=progress2 /path/to/source /path/to/destiny
+		- "a" for archive mode
+		- "r" for rexursive
+		- "u" for skipping files newer on receiver
+		- "h" for human readable
