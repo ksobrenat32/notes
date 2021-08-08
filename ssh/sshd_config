@@ -4,16 +4,36 @@
 # Specify a port
 # Port 22
 
+# Root Login not allowed
 PermitRootLogin no
+
+# Max tries when authenticating
 MaxAuthTries 5
+
+# Max sessions at the same time
 MaxSessions 5
+
+# Disable password authentication and empty passwords
 PasswordAuthentication no
 PermitEmptyPasswords no
+
+# PAM is an authentication module
 UsePAM yes
+
+# Change this to yes and uncomment the next one if you wat to forward X11
 X11Forwarding no
+# X11UseLocalhost no
+
+# Message of the day
 PrintMotd no
+
+# Enviroment
 AcceptEnv LANG LC_*
+
+# Using sftp 
 Subsystem	sftp	/usr/lib/openssh/sftp-server
+
+# Enable Public key authentication
 PubkeyAuthentication yes
 
 # Specify your user
