@@ -2,6 +2,10 @@ For using virsh without root, add your user to group libvirt
 
 	sudo usermod -a -G libvirt user
 
+For using virsh, you should write to ~/.config/libvirt/libvirt.conf
+
+	uri_default = "qemu:///system"
+
 # Headless vm
 
 For installing virtual machines without graphics appart from libvirt, kvm,qemu and their dependencies,we need virt-install, and qemu-img.
