@@ -1,22 +1,28 @@
-For using virsh without root, add your user to group libvirt
+# Configuring virsh for non-root user
+
+1. Add your user to group libvirt
 
 	sudo usermod -a -G libvirt user
 
-For using virsh, you should write to ~/.config/libvirt/libvirt.conf
+2. Write the configuration to ~/.config/libvirt/libvirt.conf
 
-	uri_default = "qemu:///system"
+	echo 'uri_default = "qemu:///system"' | tee -a ~/.config/libvirt/libvirt.conf
 
-# Headless vm
+# Virtualization
 
-For installing virtual machines without graphics appart from libvirt, kvm,qemu and their dependencies,we need virt-install, and qemu-img.
+For installing virtual machines without graphics we need to have some things installed. For debian:
+
+	apt install qemu qemu-kvm qemu-system qemu-utils libvirt-clients libvirt-daemon-system virtinst virt-manager bridge-utils
+	
+And enable libvirt daemon
+
+	systemctl enable libvirtd
  
-### Create a disk image for the virtual machine
+## Create a disk image for the virtual machine
 
     qemu-img create -f qcow2 ./name.qcow2 8G
 
-Change the size and name
-
-### Run the virtual machine from serial with virt install.
+## Run the virtual machine from serial with virt install.
 
 The important thing is using some parameters with the virt install, disable the graphics and enable a serial console.
 
@@ -33,7 +39,7 @@ If you are using an ISO, you can use the cdrom parameter
     --cdrom ./example.iso \
 
 
-#### Debian example
+### Debian example
 
     virt-install \
         --name debian10 \
@@ -49,7 +55,7 @@ If you are using an ISO, you can use the cdrom parameter
         --location 'http://ftp.debian.org/debian/dists/buster/main/installer-amd64/' \
         --extra-args 'console=ttyS0,115200n8 serial'
 
-#### Centos example
+### Centos example
 
     virt-install \
         --name centos-stream8 \
