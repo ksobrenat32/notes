@@ -16,6 +16,7 @@ MaxSessions 5
 # Disable password authentication and empty passwords
 PasswordAuthentication no
 PermitEmptyPasswords no
+ChallengeResponseAuthentication no
 
 # PAM is an authentication module
 UsePAM yes
