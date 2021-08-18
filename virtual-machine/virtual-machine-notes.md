@@ -6,6 +6,7 @@
 
 2. Write the configuration to ~/.config/libvirt/libvirt.conf
 
+	mkdir -p ~/.config/libvirt/
 	echo 'uri_default = "qemu:///system"' | tee -a ~/.config/libvirt/libvirt.conf
 
 # Virtualization

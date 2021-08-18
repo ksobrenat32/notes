@@ -29,7 +29,7 @@ X11Forwarding no
 PrintMotd no
 
 # Enviroment
-AcceptEnv LANG LC_*
+#AcceptEnv LANG LC_*
 
 # Using sftp 
 Subsystem	sftp	/usr/lib/openssh/sftp-server
