@@ -78,3 +78,42 @@ If you only want it on IPv6
     		server_name _;
     		...
 	}
+
+
+## SELINUX
+
+For proxy_pass with selinux use:
+
+	setsebool -P httpd_can_network_connect on 
+
+Problems with files permissions, solve them with
+
+	sudo grep nginx /var/log/audit/audit.log | audit2allow -M nginx > nginx.te && sudo semodule -i nginx.pp
+
+## File server
+
+If you want to serve files
+
+	server {
+		...
+		root /directorie/to/serve;
+		autoindex on;
+		autoindex_exact_size off;
+		autoindex_localtime on;
+	}
+
+## Authentication
+
+To generate a password file
+
+> Only use -c when creating the file
+
+	sudo htpasswd -c /etc/nginx/.htpasswd first_user
+
+Add this to your server config
+
+	server {
+		auth_basic "Private sharing files";
+    		auth_basic_user_file /etc/nginx/.htpasswd; 
+	}
+
