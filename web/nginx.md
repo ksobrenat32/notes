@@ -30,8 +30,8 @@ Without conf.d/ and sites-enabled/ for simplicity. With a proxy pass
 				listen 80 default_server;
 				listen [::]:80 default_server;
 				server_name _;
-				# Return error by default
-				return 403;
+				# Do not return anything by default
+				return 444;
 		}
 
 		# Navidrome
