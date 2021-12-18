@@ -13,11 +13,11 @@ set -e
 
 ### ----- Change this values -----
 
-tgbot_dir='/path/to/tgbot-upload.py/dir'
-dir='/path/to/backup/dir'
-bup_dir='/path/to/save/backup/dir'
-filename='name_of_encrypted_files'
-pass='super strong password for encrypted drives'
+#tgbot_dir='/path/to/tgbot-upload.py/dir'
+#dir='/path/to/backup/dir'
+#bup_dir='/path/to/save/backup/dir'
+#filename='name_of_encrypted_files'
+#pass='super strong password for encrypted drives'
 
 ### ----- script -----
 
