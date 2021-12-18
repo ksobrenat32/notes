@@ -56,16 +56,15 @@ run as the user you want to run the backup:
 You need to define some environment variables (you
  can also define it inside both scripts).
 
-- tgbot_dir='/path/to/tgbot-upload.py/dir'
- # The **path** to the python script.
-- dir='/path/to/backup/dir'
- # The directory to backup
-- bup_dir='/path/to/save/backup/dir'
- # Where encrypted files will be saved for 7 days
-- filename='name_of_encrypted_files'
- # The name you want the encrypted files to have
-- pass='super strong password for encrypted drives'
- # The password of the encrypted files
+- tgbot_dir='/path/to/tgbot-upload.py/dir' # The **path**
+ to the python script.
+- dir='/path/to/backup/dir' # The directory to backup
+- bup_dir='/path/to/save/backup/dir' # Where encrypted
+ files will be saved for 7 days
+- filename='name_of_encrypted_files' # The name you
+ want the encrypted files to have
+- pass='super strong password for encrypted drives' # The
+ password of the encrypted files
 - bot_token='Telegram bot token from BotFather'
 - api_id='Telegram API ID'
 - api_hash='Telegram API HASH'
