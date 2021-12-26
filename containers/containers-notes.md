@@ -65,21 +65,22 @@ This is useful for example for a raspberry, when you
 
 ### Extracting binaries for vaultwarden
 
-1. Pull the image for the architecture you want, be careful with tags.
+#### 1. Pull the image for the architecture you want, be careful with tags
 
-     podman pull --platform linux/arm64 vaultwarden/server
+    podman pull --platform linux/arm64 vaultwarden/server
 
-2. Create but not start a container based on the image.
+#### 2. Create but not start a container based on the image
 
-     podman create --name vw vaultwarden/server
+    podman create --name vw vaultwarden/server
 
-3. Copy the needed binaries.
+#### 3. Copy the needed binaries
 
-     podman cp vw:/vaultwarden .
-     podman cp vw:/web-vault .
+    podman cp vw:/vaultwarden .
 
-4. Delete container and image
+    podman cp vw:/web-vault .
 
-     podman rm vw
-     podman rmi vaultwarden/server:latest
+#### 4. Delete container and image
 
+    podman rm vw
+
+    podman rmi vaultwarden/server:latest
