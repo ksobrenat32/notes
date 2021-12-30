@@ -31,5 +31,8 @@ blocking:
       - ads
   # Return 0.0.0.0 if in add list
   blockType: zeroIp
+# Delete logs
+queryLog:
+  type: none
 # Used port
 port: 53
