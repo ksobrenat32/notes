@@ -61,17 +61,11 @@ If you are using an ISO, you can use the cdrom parameter
         --location 'http://ftp.debian.org/debian/dists/stable/main/installer-amd64/' \
         --extra-args 'console=ttyS0,115200n8 serial'
 
-### Centos example
+### URLS
 
-    virt-install \
-        --name centos-stream9 \
-        --memory 2048 \
-        --disk path=./centos-stream9.qcow2,size=10,format=qcow2,bus=virtio \
-        --vcpus 1 \
-        --os-type linux \
-        --os-variant centos-stream9 \
-        --network bridge=virbr0,model=virtio \
-        --graphics none \
-        --console pty,target_type=serial \
-        --location 'http://mirror.stream.centos.org/9-stream/BaseOS/x86_64/os/' \
-        --extra-args 'console=ttyS0,115200n8 serial'
+- [Debian Stable](http://ftp.debian.org/debian/dists/stable/main/installer-amd64/)
+- [Debian OldStable](http://ftp.debian.org/debian/dists/oldstable/main/installer-amd64/)
+- [Debian Testing](http://ftp.debian.org/debian/dists/testing/main/installer-amd64/)
+- [CentOS-stream8](http://mirror.centos.org/centos/8-stream/BaseOS/x86_64/os/)
+- [CentOS-stream9](http://mirror.stream.centos.org/9-stream/BaseOS/x86_64/os/)
+- [Rocky Linux 8.5](https://dl.rockylinux.org/pub/rocky/8.5/BaseOS/x86_64/os/)
