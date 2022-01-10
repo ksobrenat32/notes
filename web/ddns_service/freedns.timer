@@ -1,0 +1,9 @@
+[Unit]
+Description=Dynamic DNS timer every 5 minutes
+
+[Timer]
+OnUnitInactiveSec=300s
+OnBootSec=15s
+
+[Install]
+WantedBy=timers.target
