@@ -4,19 +4,27 @@
 
 ## Deleting all containers including its volumes
 
-    podman rm -vf $(podman ps -a -q)
+```bash
+podman rm -vf $(podman ps -a -q)
+```
 
 ## Deleting all the images
 
-    podman rmi -f $(podman images -a -q)
+```bash
+podman rmi -f $(podman images -a -q)
+```
 
 ## Building images
 
-    podman build -t name:version .
+```bash
+podman build -t name:version .
+```
 
 ## Watching logs
 
-    podman logs --tail 50 --follow --timestamps name-of-the-container
+```bash
+podman logs --tail 50 --follow --timestamps name-of-the-container
+```
 
 ## Creating systemd services with podman
 
@@ -24,34 +32,38 @@
 
 > For running this as a user you need 'sudo loginctl enable-linger username'
 
-### Generating the files
+1. Generating the files
+2. Enable the service
+3. Check if it is enabled
 
-    podman generate systemd --files --name --restart-policy=always <name_of_pod_or_container>
-
-Move all generated files to ~/.config/systemd/user/ or if you are root to/etc/systemd/system/
-
-### Enable the service
-
-    systemctl --user enable --now <name_of_pod.service>
-
-### Check if it is enabled
-
-    systemctl --user is-enabled <name_of_pod.service>
+```bash
+podman generate systemd --files --name --restart-policy=always <name_of_pod_or_container>
+systemctl --user enable --now <name_of_pod.service>
+mv <name_of_pod.service>  ~/.config/systemd/user/
+# if root : mv <name_of_pod.service>  /etc/systemd/system/
+systemctl --user is-enabled <name_of_pod.service>
+```
 
 ## Building image in podman with docker format
 
-    podman build -t name:version --format docker .
+```bash
+podman build -t name:version --format docker .
+```
 
 ## Using a system with selinux and podman
 
 When mounting volumes use :z at the end.
-   Example:
+Example:
 
-    podman run -it --rm -v ./thing/:/thing:z alpine sh
+```bash
+podman run -it --rm -v ./thing/:/thing:z alpine sh
+```
 
-   or in a docker-compose.yml:
+or in a docker-compose.yml:
 
-      - ./postgresdata:/var/lib/postgresql/data:z
+```bash
+- ./postgresdata:/var/lib/postgresql/data:z
+```
 
 ## Extrating binaries from container
 
@@ -65,22 +77,16 @@ This is useful for example for a raspberry, when you
 
 ### Extracting binaries for vaultwarden
 
-#### 1. Pull the image for the architecture you want, be careful with tags
+1. Pull the image for the architecture you want, be careful with tags
+2. Create but not start a container based on the image
+3. Copy the needed binaries
+4. Delete container and image
 
+```bash
     podman pull --platform linux/arm64 vaultwarden/server
-
-#### 2. Create but not start a container based on the image
-
     podman create --name vw vaultwarden/server
-
-#### 3. Copy the needed binaries
-
     podman cp vw:/vaultwarden .
-
     podman cp vw:/web-vault .
-
-#### 4. Delete container and image
-
     podman rm vw
-
     podman rmi vaultwarden/server:latest
+```

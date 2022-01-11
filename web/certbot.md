@@ -2,22 +2,28 @@
 
 Let's encrypt, easy way to get certificate
 
-    sudo apt install certbot
+```bash
+sudo apt install certbot
+```
 
 ## DNS certonly
 
-Get a certificate modifying a TXT on the dns, you can use wildcards like `*.domain.tld`. You do not need a web service running
+Get a certificate modifying a TXT on the dns, you can use
+ wildcards like `*.domain.tld`. You do not need a web service running
 
+```bash
     sudo certbot --manual --preferred-challenges dns certonly
+```
 
 ## Nginx
 
-Get a certificate while using nginx, difficult to use wildcards and sometimes tricky.
+Get a certificate while using nginx, difficult to use wildcards
+ and sometimes tricky.
 
-Install the pluggin with 
+Install the pluggin and get a certificate
 
-    sudo apt-get install python3-certbot-nginx
+```bash
+sudo apt-get install python3-certbot-nginx
+sudo certbot --nginx -d sub.domain.tld
+```
 
-Generate a certificate
-
-    sudo certbot --nginx -d sub.domain.tld
