@@ -53,7 +53,7 @@
 ### Taking snapshot
 
     cd /mnt/orig
-    sudo btrfs subvolume snapshot -r data/ backup-snapshots/data--$(date +%Y%m%d)
+    sudo btrfs subvolume snapshot -r data/ backup-snapshots/data-$(date -I)
 
 ### Sending incremental snapshot
 
