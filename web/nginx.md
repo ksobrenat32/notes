@@ -20,35 +20,59 @@ http {
     types_hash_max_size 2048;
     include /etc/nginx/mime.types;
     default_type application/octet-stream;
-    ssl_protocols TLSv1 TLSv1.1 TLSv1.2 TLSv1.3; # Dropping SSLv3, ref: POODLE
+    gzip on;
+
+    # Security
+    ssl_protocols TLSv1.2 TLSv1.3;
     ssl_prefer_server_ciphers on;
+    server_tokens off;
+    client_header_buffer_size 1k;
+    large_client_header_buffers 2 1k;
+    add_header Strict-Transport-Security "max-age=15768000; includeSubDomains" always;
+    add_header X-Frame-Options SAMEORIGIN;
+    add_header X-Content-Type-Options nosniff;
+    add_header X-XSS-Protection "1; mode=block";
+
+    # Logs
     access_log /var/log/nginx/access.log;
     error_log /var/log/nginx/error.log;
-    gzip on;
 
     # Default
     server {
         listen 80 default_server;
         listen [::]:80 default_server;
         server_name _;
-        # Do not return anything by default
-        return 444;
+        # Redirect to https
+        return 301 https://$host$request_uri;
     }
 
-    # Service Example
-    server {
-        server_name <domain.tld>;
-        location / {
-            # Change this port for proxy pass
-            proxy_pass http://127.0.0.1:8080;
-        }
+    # Include services
+    include /etc/nginx/conf.d/*.conf;
 
-        listen 443 ssl http2;
-        listen [::]:443 ssl http2;
-        # You can get a certificate with certbot
-        ssl_certificate /etc/letsencrypt/live/<domain.tld>/fullchain.pem;
-        ssl_certificate_key /etc/letsencrypt/live/<domain.tld>/privkey.pem;
+}
+```
+
+## Services
+
+```nginx
+server {
+    server_name your.domain;
+    
+    listen 443 ssl http2;
+
+    ssl_certificate /etc/letsencrypt/live/your.domain/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/your.domain/privkey.pem;
+    include /etc/letsencrypt/options-ssl-nginx.conf;
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem;
+
+    location / {
+        proxy_http_version 1.1;
+        proxy_pass http://127.0.0.1:8000;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
     }
+
 }
 ```
 
