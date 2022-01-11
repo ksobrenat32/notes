@@ -3,13 +3,13 @@
 ## Generate safe ssh key pair
 
 ```bash
-    ssh-keygen -o -a 100 -t ed25519 -f ~/.ssh/id_ed25519 -C "user@email.com"
+ssh-keygen -o -a 100 -t ed25519 -f ~/.ssh/id_ed25519 -C "user@email.com"
 ```
 
 ## Add a password to an existing key
 
 ```bash
-    ssh-keygen -p -f keyfile
+ssh-keygen -p -f keyfile
 ```
 
 ## SELINUX ssh keys on non /home path

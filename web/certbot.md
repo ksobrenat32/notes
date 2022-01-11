@@ -12,7 +12,7 @@ Get a certificate modifying a TXT on the dns, you can use
  wildcards like `*.domain.tld`. You do not need a web service running
 
 ```bash
-    sudo certbot --manual --preferred-challenges dns certonly
+sudo certbot --manual --preferred-challenges dns certonly
 ```
 
 ## Nginx

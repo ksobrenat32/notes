@@ -83,10 +83,10 @@ This is useful for example for a raspberry, when you
 4. Delete container and image
 
 ```bash
-    podman pull --platform linux/arm64 vaultwarden/server
-    podman create --name vw vaultwarden/server
-    podman cp vw:/vaultwarden .
-    podman cp vw:/web-vault .
-    podman rm vw
-    podman rmi vaultwarden/server:latest
+podman pull --platform linux/arm64 vaultwarden/server
+podman create --name vw vaultwarden/server
+podman cp vw:/vaultwarden .
+podman cp vw:/web-vault .
+podman rm vw
+podman rmi vaultwarden/server:latest
 ```
