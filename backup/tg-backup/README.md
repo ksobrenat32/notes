@@ -44,12 +44,16 @@ You will also need a telegram bot:
 This script depends on various things. From your package
  manager, you should install 7zip
 
-    sudo apt install p7zip-full
+```bash
+sudo apt install p7zip-full
+ ```
 
 And with python pip you should go to ./tgbot-upload and
 run as the user you want to run the backup:
 
-    pip install -r requirements
+```bash
+pip install -r requirements
+```
 
 ## How to use
 
@@ -73,7 +77,9 @@ You need to define some environment variables (you
 Now you can just add to the crontab of the user
  that runs the backup:
 
+```cronjob
     0 4 * * * /path/to/tg-backup
+```
 
 So it runs the backup daily at 4am
 
