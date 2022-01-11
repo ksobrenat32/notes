@@ -77,8 +77,8 @@ You need to define some environment variables (you
 Now you can just add to the crontab of the user
  that runs the backup:
 
-```cronjob
-    0 4 * * * /path/to/tg-backup
+```bash
+0 4 * * * /path/to/tg-backup
 ```
 
 So it runs the backup daily at 4am
