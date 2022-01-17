@@ -23,8 +23,15 @@ http {
     gzip on;
 
     # Security
+
+    # Certbot recommends : 
+    ssl_session_cache shared:le_nginx_SSL:10m;
+    ssl_session_timeout 1440m;
+    ssl_session_tickets off;
     ssl_protocols TLSv1.2 TLSv1.3;
-    ssl_prefer_server_ciphers on;
+    ssl_prefer_server_ciphers off;
+    ssl_ciphers "ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY1305:DHE-RSA-AES128-GCM-SHA256:DHE-RSA-AES256-GCM-SHA384";
+
     server_tokens off;
     client_header_buffer_size 1k;
     large_client_header_buffers 2 1k;
