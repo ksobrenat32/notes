@@ -82,3 +82,4 @@ You may need to change architecture if running on aarch64
 - [CentOS-stream8](http://mirror.centos.org/centos/8-stream/BaseOS/x86_64/os/)
 - [CentOS-stream9](http://mirror.stream.centos.org/9-stream/BaseOS/x86_64/os/)
 - [Rocky Linux 8.5](https://dl.rockylinux.org/pub/rocky/8.5/BaseOS/x86_64/os/)
+- [Fedora Server 35](https://mirror.umd.edu/fedora/linux/releases/35/Server/x86_64/os/)
