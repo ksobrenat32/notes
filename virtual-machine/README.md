@@ -83,3 +83,26 @@ You may need to change architecture if running on aarch64
 - [CentOS-stream9](http://mirror.stream.centos.org/9-stream/BaseOS/x86_64/os/)
 - [Rocky Linux 8.5](https://dl.rockylinux.org/pub/rocky/8.5/BaseOS/x86_64/os/)
 - [Fedora Server 35](https://mirror.umd.edu/fedora/linux/releases/35/Server/x86_64/os/)
+
+## Converting from raw to qcow2
+
+For converting raw (in this case a linux volume) to a qcow2 we
+ must sparse it, so it does not use lots of space, in order to
+ do this, first of all we need to install `libguestfs-tools-c`
+
+ ``` sh
+sudo dnf install libguestfs-tools-c
+ ```
+
+With that it will be installed the tool `virt-sparsify`, that is
+ the one we need. Now we need to be sure that out /tmp directory
+ is bigger than the raw image we are converting, may mount other
+ drive in /tmp.
+
+In orther to do the convertion, we can use
+
+```sh
+sudo virt-sparsify /dev/mapper/VG-VM --convert qcow2 /out/VM.qcow2 --check-tmpdir fail
+```
+
+The last flag is to check if the size of /tmp is enough.
