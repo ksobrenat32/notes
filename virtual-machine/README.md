@@ -106,3 +106,22 @@ sudo virt-sparsify /dev/mapper/VG-VM --convert qcow2 /out/VM.qcow2 --check-tmpdi
 ```
 
 The last flag is to check if the size of /tmp is enough.
+
+## Mount qcow2 image
+
+For mounting:
+
+```sh
+modprobe nbd max_part=8
+qemu-nbd --connect=/dev/nbd0 ./image.qcow2
+fdisk /dev/nbd0 -l
+mount /dev/nbd0p1 /mnt
+```
+
+For unmounting:
+
+```sh
+umount /mnt/somepoint/
+qemu-nbd --disconnect /dev/nbd0
+rmmod nbd
+```
