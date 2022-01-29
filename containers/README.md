@@ -90,3 +90,23 @@ podman cp vw:/web-vault .
 podman rm vw
 podman rmi vaultwarden/server:latest
 ```
+
+## Ping from rootless container
+
+In case you want to be able to use ping inside rootless containers,
+ you can run:
+
+```sh
+echo -e 'net.ipv4.ping_group_range=0 165535' | sudo tee /etc/sysctl.d/podman-ping.conf
+```
+
+## Enable docker registrie on podman
+
+In some distributions podman package it is not included the docker
+ registrie so if you want to use it, you must specify it in the
+ configuration.
+
+ ```sh
+mkdir -p $HOME/.config/containers/
+echo -e "[registries.search]\nregistries = ['docker.io']" | tee $HOME/.config/containers/registries.conf
+ ```
