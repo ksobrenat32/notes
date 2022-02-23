@@ -154,3 +154,42 @@ server {
     auth_basic_user_file /etc/nginx/.htpasswd; 
 }
 ```
+
+## Common error codes
+
+code | class
+--- | ---
+1xx | Informational
+2xx | Success
+3xx | Redirection
+4xx | Client Error
+5xx | Server Error
+
+`return 400;` - Bad Request: the HTTP request that was sent to the
+ server has invalid syntax.
+
+`return 401;` - Unauthorized: that the user trying to access
+ the resource has not been authenticated or has not been
+ authenticated correctly.
+
+`return 403;` - Forbidden: that the user made a valid request but
+ the server is refusing to serve the request, due to a lack of
+ permission to access the requested resource
+
+`return 404;` - Not found: that the user is able to communicate
+ with the server but it is unable to locate the requested file
+ or resource.
+
+`return 444;` - Not return anything
+
+`return 500;` - Internal server error: that server cannot process
+ the request for an unknown reason. Sometimes this code will
+ appear when more specific 5xx errors are more appropriate.
+
+`return 502;` - Bad Gateway: that the server is a gateway or proxy
+ server, and it is not receiving a valid response from the backend
+ servers that should actually fulfill the request.
+
+`return 503;` - Gateway timeout: that the server is a gateway or
+ proxy server, and it is not receiving a response from the backend
+ servers within the allowed time period.
