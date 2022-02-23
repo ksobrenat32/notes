@@ -110,3 +110,11 @@ In some distributions podman package it is not included the docker
 mkdir -p $HOME/.config/containers/
 echo -e "[registries.search]\nregistries = ['docker.io']" | tee $HOME/.config/containers/registries.conf
  ```
+
+## Enable podman socket
+
+For a rootless user:
+
+```sh
+systemctl --user enable --now podman.socket
+```
