@@ -117,4 +117,5 @@ For a rootless user:
 
 ```sh
 systemctl --user enable --now podman.socket
+export DOCKER_HOST=///run/user/$UID/podman/podman.sock
 ```
