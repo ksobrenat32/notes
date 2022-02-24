@@ -125,3 +125,24 @@ umount /mnt/somepoint/
 qemu-nbd --disconnect /dev/nbd0
 rmmod nbd
 ```
+
+## Mount raw image or linux volume
+
+Create a loop device with
+
+```sh
+losetup -f -P raw.img
+```
+
+You can see the open files with:
+
+```sh
+losetup -l
+fdisk -l
+```
+
+And mount it with:
+
+```sh
+mount /dev/loop0p1 /mnt/mypartition
+```
