@@ -2,16 +2,24 @@
 
 Use this configuration with blocky as a recursive dns with adblocking.
 
-## Root-hints
+## AlpineLinux - Root-hints
 
 You need the root hints, to download them use:
 
 ```sh
-wget -S -N https://www.internic.net/domain/named.cache -O /etc/unbound/root.hints
+sudo wget -S -N https://www.internic.net/domain/named.cache -O /etc/unbound/root.hints
 ```
 
-You may have a cronjob running for this.
+You may have a cronjob running for this (as root).
 
 ```cron
 5 4 * * 7 /usr/bin/wget -S -N https://www.internic.net/domain/named.cache -O /etc/unbound/root.hints
+```
+
+## Debian - resolvconf
+
+Disable unbound-resolvconf if you do not use it
+
+```sh
+sudo systemctl disable unbound-resolvconf.service
 ```
