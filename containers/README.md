@@ -119,3 +119,13 @@ For a rootless user:
 systemctl --user enable --now podman.socket
 export DOCKER_HOST=///run/user/$UID/podman/podman.sock
 ```
+
+## Problems with SELINUX
+
+I had a problem when using the linuxserver's swag image
+ where the image could not make the needed chown. To
+ solve it, I added this to the podman command.
+
+```sh
+--security-opt label=disable
+```
