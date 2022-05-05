@@ -37,3 +37,35 @@ And use this for files
 ```sh
 find /dir -type f -exec chmod 644 {} \;
 ```
+
+## Centos
+
+### Add btrfs support through kmod
+
+I love btrfs, but I also like rhel and family which is not really
+ btrfs-friendly, searching for a solution I founded [this user](https://cbs.centos.org/koji/userinfo?userID=258)
+ which builds kmod and btrfs-progs with centos' koji system.
+
+To install it, first install the repo on rhel 9 and family:
+
+```sh
+curl -o centos-release-kmods-9-1.el9s.noarch.rpm -fsSL https://cbs.centos.org/kojifiles/packages/centos-release-kmods/9/1.el9s/noarch/centos-release-kmods-9-1.el9s.noarch.rpm
+sudo dnf install ./centos-release-kmods-9-1.el9s.noarch.rpm
+```
+
+To install it, first install the repo on rhel 9 and family:
+
+```sh
+curl -o centos-release-kmods-8-1.el8s.noarch.rpm -fsSL https://cbs.centos.org/kojifiles/packages/centos-release-kmods/8/1.el8s/noarch/centos-release-kmods-8-1.el8s.noarch.rpm
+sudo dnf install ./centos-release-kmods-8-1.el8s.noarch.rpm
+```
+
+Then update and install btrfs-progs, it will download the kmod as
+ a dependency
+
+```sh
+sudo dnf update
+sudo dnf install btrfs-progs
+```
+
+Reboot and it should be working great :D
