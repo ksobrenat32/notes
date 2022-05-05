@@ -6,6 +6,12 @@
 #!/usr/bin/env bash
 ```
 
+## Temporal history disable
+
+```sh
+set +o history
+```
+
 ## Useful parameters
 
 ```bash
