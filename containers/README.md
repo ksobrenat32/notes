@@ -21,6 +21,16 @@ podman build -t name:version .
 podman logs --tail 50 --follow --timestamps name-of-the-container
 ```
 
+## Fast disposable container
+
+In some cases I need to test some command in a distro, the fastest
+ way of doing this is through a podman container, you can change
+ fedora for the distro of your choice.
+
+``` sh
+podman run -it --rm fedora bash
+```
+
 ## Creating systemd services with podman
 
 [Documentation](http://docs.podman.io/en/latest/markdown/podman-generate-systemd.1.html)
