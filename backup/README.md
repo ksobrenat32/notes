@@ -47,6 +47,7 @@ rsync -arzuvhP --ignore-existing /path/to/source /path/to/destiny
 - "u" for skipping files newer on receiver
 - "h" for human readable
 - "P" for progress
+- "c" for checksum
 
 > "-n" for dry run
 
