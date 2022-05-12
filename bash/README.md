@@ -40,3 +40,12 @@ With `fg` you can bring back zombies processes from background
 > Remember you can use `kill -9 PID` to kill a proccess
 > To obtain the PID, use `ps ax`
 > Use `renice` to adjust priority of processes
+
+## For statement
+
+Example of a for statement, this example does something like
+ ls
+
+```sh
+for i in ./* ; do echo "$i" ; done
+```
