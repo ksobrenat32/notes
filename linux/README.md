@@ -40,6 +40,15 @@ find /dir -type f -exec chmod 644 {} \;
 
 ## Centos
 
+### Fix SELINUX
+
+You can change the SELINUX context to the default of the directory
+ it is located with
+
+```sh
+sudo restorecon -R file
+```
+
 ### Add btrfs support through kmod
 
 I love btrfs, but I also like rhel and family which is not really
