@@ -2,16 +2,11 @@
 
 > You can change podman to docker and viceversa, it should just work
 
-## Deleting all containers including its volumes
+## Deleting all containers or images
 
 ```bash
-podman rm -vf $(podman ps -a -q)
-```
-
-## Deleting all the images
-
-```bash
-podman rmi -f $(podman images -a -q)
+podman rm -a
+podman rmi -a
 ```
 
 ## Building images
