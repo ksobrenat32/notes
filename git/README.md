@@ -45,3 +45,12 @@ If you want to remove multiple commits, you can use:
 ```sh
 git reset --soft HEAD~2
 ```
+
+## Save http credentials
+
+In case you are using git through http, you can temporarily save
+ your credentials.
+
+```sh
+git config --global credential.helper 'cache --timeout 7200'
+```
