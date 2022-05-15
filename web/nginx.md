@@ -5,13 +5,13 @@
 Without conf.d/ and sites-enabled/ for simplicity. With a proxy pass
 
 ```nginx
-user www-data;
+user  nginx;
 worker_processes auto;
-pid /run/nginx.pid;
-include /etc/nginx/modules-enabled/*.conf;
+pid        /var/run/nginx.pid;
+
 
 events {
-    worker_connections 768;
+    worker_connections  1024;
 }
 
 http {
