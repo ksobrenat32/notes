@@ -38,6 +38,25 @@ And use this for files
 find /dir -type f -exec chmod 644 {} \;
 ```
 
+## Wireguard
+
+For setting up a wireguard server, you need a compatible kernel
+ and the wireguard tools, the wireguard config you can build it
+ yourself using [this](https://fedoramagazine.org/build-a-virtual-private-network-with-wireguard/)
+ just remember that if you need forwarding packets, you should
+ allow it in your firewall, in firewalld:
+
+```sh
+firewall-cmd --add-forward
+```
+
+And to add to your `/etc/sysctl.conf`
+
+```sysctl
+net.ipv4.ip_forward=1
+net.ipv6.conf.all.forwarding=1
+```
+
 ## Centos
 
 ### Fix SELINUX
@@ -60,13 +79,6 @@ To install it, first install the repo on rhel 9 and family:
 ```sh
 curl -o centos-release-kmods-9-1.el9s.noarch.rpm -fsSL https://cbs.centos.org/kojifiles/packages/centos-release-kmods/9/1.el9s/noarch/centos-release-kmods-9-1.el9s.noarch.rpm
 sudo dnf install ./centos-release-kmods-9-1.el9s.noarch.rpm
-```
-
-To install it, first install the repo on rhel 9 and family:
-
-```sh
-curl -o centos-release-kmods-8-1.el8s.noarch.rpm -fsSL https://cbs.centos.org/kojifiles/packages/centos-release-kmods/8/1.el8s/noarch/centos-release-kmods-8-1.el8s.noarch.rpm
-sudo dnf install ./centos-release-kmods-8-1.el8s.noarch.rpm
 ```
 
 Then update and install btrfs-progs, it will download the kmod as
