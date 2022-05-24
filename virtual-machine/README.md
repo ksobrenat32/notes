@@ -17,7 +17,9 @@ For installing virtual machines without graphics we need
  to have some things installed and then enable libvirt daemon
 
 ```bash
-apt install qemu qemu-kvm qemu-system qemu-utils libvirt-clients libvirt-daemon-system virtinst virt-manager bridge-utils
+apt install qemu qemu-kvm qemu-system qemu-utils \
+    libvirt-clients libvirt-daemon-system virtinst \
+    virt-manager bridge-utils
 # or
 dnf install @virtualization
 systemctl enable libvirtd
@@ -91,7 +93,7 @@ For converting raw (in this case a linux volume) to a qcow2 we
  do this, first of all we need to install `libguestfs-tools-c`
 
  ``` sh
-sudo dnf install libguestfs-tools-c
+dnf install libguestfs-tools-c
  ```
 
 With that it will be installed the tool `virt-sparsify`, that is
@@ -102,7 +104,7 @@ With that it will be installed the tool `virt-sparsify`, that is
 In orther to do the convertion, we can use
 
 ```sh
-sudo virt-sparsify /dev/mapper/VG-VM --convert qcow2 /out/VM.qcow2 --check-tmpdir fail
+virt-sparsify /dev/mapper/VG-VM --convert qcow2 /out/VM.qcow2 --check-tmpdir fail
 ```
 
 The last flag is to check if the size of /tmp is enough.
@@ -145,4 +147,67 @@ And mount it with:
 
 ```sh
 mount /dev/loop0p1 /mnt/mypartition
+```
+
+For unmounting and closing:
+
+```sh
+umount /mnt/mypartition
+losetup -d /dev/loop0p1
+```
+
+## Mount with virtiofsd
+
+I had a problem, I needed to mount a btrfs disk on a rhel9 vm,
+ this is not supported, so I thought it would be a great idea
+ to mount it on the Debian host and share it with virtiofsd,
+ supporting selinux and all of that, it may not be the most
+ secure way and it has some problems, so use it at your own
+ risk.
+
+### Upgrade Debian libvirt packages
+
+Debian 11 bullseye has an old libvirt package, so you need to
+ upgrade them from backports, the packages are `qemu qemu-kvm
+ qemu-system qemu-utils libvirt-clients libvirt-daemon-system
+ virtinst` and after the upgrade you should restart libvirtd
+
+### Run virtiofsd as a systemd service
+
+In order to run virtiofsd in a socket, you should run it separated
+ this can be done with a systemd service:
+
+```service
+[Unit]
+Description=Virtiofsd for sharing disk WD-WX32D5143K0L
+Documentation=https://gitlab.com/virtio-fs/virtiofsd
+
+[Service]
+ExecStart=/usr/lib/qemu/virtiofsd --socket-path=/var/virtiofsd.sock \
+    --socket-group=libvirt-qemu -o xattr,source="/mnt/Disk",\
+    xattrmap=":map:security.selinux:trusted.virtiofs.:",modcaps=+sys_admin
+
+ [Install]
+WantedBy=multi-user.target
+```
+
+The extra options are 'xattr' for enabling those, 'source'
+ to declare the dir to share, 'xattrmap' so you can have
+ different selinux context on the host and the guest,
+ 'modcaps' so it is able to set trusted xattr. The service
+ should run as root.
+
+### Add the xml to the vm
+
+With `virsh edit` you should edit the domain xml to declare the
+ socket
+
+```xml
+<filesystem type='mount'>
+  <driver type='virtiofs' queue='1024'/>
+  <source socket='/var/virtiofsd.sock'/>
+  <target dir='myDisk'/>
+  <alias name='fs0'/>
+  <address type='pci' domain='0x0000' bus='0x07' slot='0x00' function='0x0'/>
+</filesystem>
 ```
