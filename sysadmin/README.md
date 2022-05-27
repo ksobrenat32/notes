@@ -1,4 +1,4 @@
-# Linux notes
+# Sysadmin notes
 
 ## Add user to use as a service
 
@@ -7,16 +7,8 @@ When you run a service, you should consider using a different user
  information. This user does not has shell access and the home is
  usually where the aplication is stored.
 
-DEBIAN:
-
 ```sh
-sudo adduser --home /opt/blocky --gecos "" --disabled-password --uid 9901 --shell /sbin/nologin blocky
-```
-
-RHEL: 
-
-```sh
-sudo adduser --home /opt/olivetin --uid 9802 --no-create-home --shell /sbin/nologin olivetin
+sudo adduser --home /opt/service --system  --shell /sbin/nologin service
 ```
 
 ## Change permission
@@ -48,6 +40,7 @@ For setting up a wireguard server, you need a compatible kernel
 
 ```sh
 firewall-cmd --add-forward
+firewall-cmd --add-masquerade
 ```
 
 And to add to your `/etc/sysctl.conf`
@@ -57,9 +50,7 @@ net.ipv4.ip_forward=1
 net.ipv6.conf.all.forwarding=1
 ```
 
-## Centos
-
-### Fix SELINUX
+## Restore SELINUX context
 
 You can change the SELINUX context to the default of the directory
  it is located with
@@ -68,25 +59,17 @@ You can change the SELINUX context to the default of the directory
 sudo restorecon -R file
 ```
 
-### Add btrfs support through kmod
+## Smart data
 
-I love btrfs, but I also like rhel and family which is not really
- btrfs-friendly, searching for a solution I founded [this user](https://cbs.centos.org/koji/userinfo?userID=258)
- which builds kmod and btrfs-progs with centos' koji system.
+Some notes of the meaning of each smart attribute, this
+ just apply to mechanical disks
 
-To install it, first install the repo on rhel 9 and family:
-
-```sh
-curl -o centos-release-kmods-9-1.el9s.noarch.rpm -fsSL https://cbs.centos.org/kojifiles/packages/centos-release-kmods/9/1.el9s/noarch/centos-release-kmods-9-1.el9s.noarch.rpm
-sudo dnf install ./centos-release-kmods-9-1.el9s.noarch.rpm
-```
-
-Then update and install btrfs-progs, it will download the kmod as
- a dependency
-
-```sh
-sudo dnf update
-sudo dnf install btrfs-progs
-```
-
-Reboot and it should be working great :D
+ATTRIBUTE_NAME | Meaning | Best value
+--- | --- | ---
+G-SENSE RATE | Impacts detected when the disk was powered on | Lower better
+REALOCATE SECTOR COUNTS | The name | Normal to have a few
+CURRENT PENDING SECTOR | Bad shutdown | 1 can be fixed
+OFFLINE UNCORRECTABLE | Failed sector | More than 0 and the disk is diying
+ULTRA DMA CRC ERROR | Problem with the wire or controller | Lower better
+LOAD CYCLE COUNT | Head stopped for inativity | Less than 150K
+LOAD RETRY COUNT | Head retrying enter the disk | Lower better
