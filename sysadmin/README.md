@@ -59,6 +59,13 @@ You can change the SELINUX context to the default of the directory
 sudo restorecon -R file
 ```
 
+Or you you can fix owner, group and selinux context if it was a path
+ created from a rpm package.
+
+```sh
+sudo rpm --restore -f /var/lib/path
+```
+
 ## Smart data
 
 Some notes of the meaning of each smart attribute, this
