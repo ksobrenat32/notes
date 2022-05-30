@@ -12,9 +12,7 @@ ExecStart=/usr/bin/rclone mount \
   --vfs-cache-mode=full \
 #Edit --vfs-cache-max-size=<your_size> \
 #Edit  <your remote>: /path/to/target/directorie
-
 #Edit ExecStartPost=<Services that require this mount>
-
 #Edit ExecStop=/bin/fusermount -uz /path/to/target/directorie
 
 Restart=on-failure
