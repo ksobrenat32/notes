@@ -1,0 +1,43 @@
+
+# Butane file for a basic fedora core OS server
+# You need to use butane to generate the ignition file
+# Remember to change the values in '#{}'
+
+variant: fcos
+version: 1.4.0
+passwd:
+  users:
+    - name: #{Your User}
+      groups:
+        - wheel
+        - sudo
+      ssh_authorized_keys:
+        - #{Your ssh Key}
+storage:
+  files:
+  # Change hostname
+    - path: /etc/hostname
+      mode: 0644
+      contents:
+        inline: #{Hostname}
+  # Configure ssh
+    - path: /etc/ssh/sshd_config
+      mode: 0644
+      contents:
+        inline: |
+          PermitRootLogin no
+          MaxAuthTries 3
+          MaxSessions 3
+          PasswordAuthentication no
+          PubkeyAuthentication yes
+          Subsystem	sftp	/usr/lib/openssh/sftp-server
+  # Enable zram
+    - path: /etc/systemd/zram-generator.conf
+      mode: 0600
+      contents:
+        inline: |
+          [zram0]
+  # Set timezone
+  links:
+    - path: /etc/localtime
+      target: ../usr/share/zoneinfo/America/Mexico_City # Change to your timezone

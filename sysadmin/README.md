@@ -1,5 +1,15 @@
 # Sysadmin notes
 
+## List for basic setup
+
+- [ ] Add ssh key
+- [ ] Configure ssh, [mine](https://raw.githubusercontent.com/ksobrenat32/notes/main/ssh/sshd_config)
+- [ ] Enable a firewall
+- [ ] Enable zram
+- [ ] Configure automatic security updates
+- [ ] Setup hostname and timezone
+- [ ] If ssd you may enable /tmp on tmpfs
+
 ## Add user to use as a service
 
 When you run a service, you should consider using a different user
