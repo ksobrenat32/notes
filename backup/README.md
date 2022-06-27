@@ -42,7 +42,7 @@ rsync -arzuvhP --ignore-existing /path/to/source /path/to/destiny
 ```
 
 - "a" for archive mode
-- "r" for rexursive
+- "r" for recursive
 - "z" for compression on transit (useful in network)
 - "u" for skipping files newer on receiver
 - "h" for human readable
