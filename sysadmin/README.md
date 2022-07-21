@@ -90,3 +90,39 @@ OFFLINE UNCORRECTABLE | Failed sector | More than 0 and the disk is diying
 ULTRA DMA CRC ERROR | Problem with the wire or controller | Lower better
 LOAD CYCLE COUNT | Head stopped for inativity | Less than 150K
 LOAD RETRY COUNT | Head retrying enter the disk | Lower better
+
+## BTRFS - setup with LUKS/dm-crypt and data duplication on single disk
+
+This exemplary initial setup uses one device partition `/dev/sdc1` this
+ needs to be a disk more than the double of the size of the data you will
+ store, this makes a single drive setup survive data corruption.
+
+WARNING:
+
+- This data duplication may not work with ssds.
+- This setup does not survive a full disk failure, remember that one
+ copy is not backup
+- You need to run constant scrubs to check for corruption and correct it
+ before it is irreparable
+
+```sh
+# Encrypt partition, remember to use a strong password
+cryptsetup --cipher aes-xts-plain64 --key-size 512 --hash sha512 --iter-time 5000 --use-urandom luksFormat /dev/sdc1
+# Backup the header, this contains the disk key, 
+cryptsetup luksHeaderBackup --header-backup-file /root/sdc1.header.bak /dev/sdc1
+# Open luks device
+cryptsetup open /dev/sdc1 disk
+# Format with btrfs
+mkfs.btrfs -d dup -m dup /dev/mapper/disk
+# Mount drive with compression
+mkdir -p /mnt/disk
+mount -o noatime,nodiratime,compress=zstd:6,defaults /dev/mapper/disk /mnt/disk/
+```
+
+## Safetely remove a SATA disk from a running system
+
+1. Unmount any filesystems on the disk. (`umount ...`)
+2. Deactivate any LVM groups. (`vgchange -an`)
+3. Make sure nothing is using the disk for anything.
+4. Spin the HDD down. (irrelevant for SSD's) (`hdparm -Y /dev/sdX`)
+5. Tell the system, that we are unplugging the HDD. (`echo 1 | sudo tee /sys/block/sdX/device/delete`)
