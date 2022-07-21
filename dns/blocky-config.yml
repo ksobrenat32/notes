@@ -1,5 +1,5 @@
 # Blocky is a DNS proxy and ad-blocker for the local network written in Go.
-# Config of ksobrenatural
+# Config by ksobrenatural
 # https://github.com/0xERR0R/blocky
 upstream:
   default:
