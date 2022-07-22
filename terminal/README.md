@@ -1,0 +1,164 @@
+# Command line use notes
+
+## Bash notes
+
+For compatibility, use this as shebang on scripts:
+
+```sh
+#!/usr/bin/env bash
+```
+
+Temporarily disable the bash history
+
+```sh
+set +o history
+```
+
+Some useful parameters on scripts
+
+```sh
+set -e # exit on error
+set -u # exit when undeclared variables exist
+set -x # trace what gets executed
+```
+
+As a recommendation, use variables like: `"${var}"` to avoid
+ problems with the names
+
+### Send to background
+
+End commands with `&` to execute on background
+
+When the command is already running, use `ctrl+z` to turn
+ it into zombie (in background but not executing)
+
+With `jobs` you can print already running processes
+
+With `fg` you can bring back zombies processes from background
+ to foreground and they start executing, with `bg` you can
+ let zombie processes execute in the background.
+
+> Remember you can use `kill -9 PID` to kill a proccess
+> To obtain the PID, use `ps ax`
+> Use `renice` to adjust priority of processes
+
+### `for` statement
+
+Example of a for statement, this example does something like `ls`
+
+```sh
+for i in ./* ; do echo "$i" ; done
+```
+
+## VIM notes
+
+You can use regex expressions on vim, for example,
+ to delete all comment lines:
+
+```vim
+:g/^\s*#/d
+```
+
+You can invoke netrw which is kinda file explorer
+
+```vim
+:Explore - opens netrw in the current window
+:Sexplore - opens netrw in a horizontal split
+:Vexplore - opens netrw in a vertical split
+```
+
+You can also snigger by typing `:Sex` to invoke a horizontal split.
+
+### How to copy paste [on vim](https://vim.fandom.com/wiki/Copy,_cut_and_paste)
+
+1. Position the cursor where you want to begin cutting.
+2. Press v to select characters, or uppercase V to select whole lines,
+ or Ctrl-v to select rectangular blocks (use Ctrl-q if Ctrl-v is mapped to paste).
+3. Move the cursor to the end of what you want to cut.
+4. Press d to cut (or y to copy).
+5. Move to where you would like to paste.
+6. Press P to paste before the cursor, or p to paste after.
+
+## GPG notes
+
+To export secret key for backup
+
+```sh
+gpg -o private-backup.gpg --export-options backup --export-secret-keys username@example.com
+```
+
+And to import the backup key
+
+```sh
+gpg --import-options restore --import private.gpg
+
+gpg --edit-key username@example.com
+
+> trust
+> 5 (ultimately)
+> save
+```
+
+## Git notes
+
+You can clone only the latest commit, this will reduce the storage
+ needed.
+
+```sh
+git clone --depth=1 repo
+```
+
+When you have cloned a repo and made local changes but you want to
+ pull the newest commit, you can stash local changes, pull and
+ stash pop
+
+```sh
+git stash
+git pull
+git stash pop
+```
+
+Keeping the last commit changes local
+
+```sh
+git reset --soft HEAD^
+# Make your fixes
+git commit 
+git push -f
+```
+
+Deleting last commit changes
+
+```sh
+git reset --hard HEAD^
+git commit 
+git push -f
+```
+
+If you want to remove multiple commits, you can use:
+
+```sh
+git reset --soft HEAD~2
+```
+
+In case you are using git through http, you can temporarily save
+ your credentials.
+
+```sh
+git config --global credential.helper 'cache --timeout 7200'
+```
+
+## SSH notes
+
+Generate safe ssh key pair
+
+```sh
+ssh-keygen -o -a 100 -t ed25519 -f ~/.ssh/id_ed25519 -C "user@email.com"
+```
+
+Add a password to an existing key
+
+```sh
+ssh-keygen -p -f keyfile
+```
+
