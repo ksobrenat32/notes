@@ -1,8 +1,9 @@
-# Configuring nginx
+# Web server notes
 
-## Basic - nginx.conf
+## Nginx
 
-Without conf.d/ and sites-enabled/ for simplicity. With a proxy pass
+Basic nginx.conf this redirects all http to https
+ and uses `conf.d` to configure other servers
 
 ```nginx
 user  nginx;
@@ -59,7 +60,8 @@ http {
 }
 ```
 
-## Services
+For running services you need to create a service.conf on
+ the conf.d directory, something like this
 
 ```nginx
 server {
@@ -83,8 +85,6 @@ server {
 }
 ```
 
-## More body size
-
 For cases when you need to send more data through nginx.
 
 ```nginx
@@ -94,8 +94,6 @@ server {
     ...
 }
 ```
-
-## IPv6 only
 
 If you only want it on IPv6
 
@@ -107,24 +105,20 @@ server {
 }
 ```
 
-## SELINUX
-
 For proxy pass with selinux use:
 
 ```bash
 setsebool -P httpd_can_network_connect on 
 ```
 
-Problems with files permissions, solve them with
+Problems with files permissions and selinux , solve them with
 
 ```bash
 sudo grep nginx /var/log/audit/audit.log | audit2allow -M nginx > nginx.te \ 
 && sudo semodule -i nginx.pp
 ```
 
-## File server
-
-If you want to serve files
+### Serving files
 
 ```nginx
 server {
@@ -136,7 +130,7 @@ server {
 }
 ```
 
-## Authentication
+### Authentication
 
 To generate a password file
 
@@ -155,7 +149,7 @@ server {
 }
 ```
 
-## Common error codes
+### Common error codes
 
 code | class
 --- | ---
@@ -193,3 +187,108 @@ code | class
 `return 503;` - Gateway timeout: that the server is a gateway or
  proxy server, and it is not receiving a response from the backend
  servers within the allowed time period.
+
+## Certbot
+
+Let's encrypt, has a service so you can easily get ssl certificates,
+ the basic cerbot command can be installed with
+
+```bash
+sudo dnf install certbot
+# If you want to use pluggins like nginx do it with pip
+sudo dnf install python3 augeas-libs
+sudo python3 -m venv /opt/certbot/
+sudo /opt/certbot/bin/pip install --upgrade pip
+sudo /opt/certbot/bin/pip install certbot
+sudo ln -s /opt/certbot/bin/certbot /usr/bin/certbot
+echo "0 0,12 * * * root /usr/bin/certbot renew -q" | sudo tee -a /etc/crontab > /dev/null
+```
+
+It is possible to get a certificate modifying a TXT record on the dns,
+ the advantage is that you can use wildcards like `*.domain.tld` and
+ there is no need to have a web server running or exposed. But you will
+ have to renew this certificates manually every 90 days.
+
+```bash
+sudo certbot --manual --preferred-challenges dns certonly
+```
+
+The automated way is having a webserver exposed so letsencrypt can verify
+ you own the domain, the requirements is having nginx up and running and
+ public DNS records pointing to that server, but the advantage is that those
+ certificates will automatically renew.
+
+```sh
+sudo /opt/certbot/bin/pip install certbot-nginx
+sudo certbot certonly --nginx -d sub.domain.tld
+```
+
+## Using private SSL certificates and Certification Authority
+
+> From [vaultwarden wiki](https://github.com/dani-garcia/vaultwarden/wiki/Private-CA-and-self-signed-certs-that-work-with-Chrome)
+
+In cases you want ssl certificates but not need them to be public,
+ you can sign your own ones and only trust them on your devices,
+ this way there is no need of external authorities like letsencrypt
+ and free use of any domain you want, even if not registrated. In
+ the example, `example.lan` is the domain being `example` the name of
+ the service
+
+The first step is creating the key of the Certification Authority.
+
+```sh
+openssl genpkey -algorithm RSA -aes128 -out private-ca.key -outform PEM -pkeyopt rsa_keygen_bits:2048
+```
+
+And for creating the certificate, that will work for 10 years, this
+ is the certificate that need to be trusted by the client devices.
+
+```sh
+openssl req -x509 -new -nodes -sha256 -days 3650 -key private-ca.key -out self-signed-ca-cert.crt
+```
+
+In order to create domain certificates, create a key
+
+```sh
+openssl genpkey -algorithm RSA -out service.key -outform PEM -pkeyopt rsa_keygen_bits:2048
+```
+
+And create a certificate request
+
+```sh
+openssl req -new -key service.key -out service.csr
+```
+
+Fill the configuration file `service.ext`, change the dns
+ alt_names accordingly.
+
+```ext
+authorityKeyIdentifier=keyid,issuer
+basicConstraints=CA:FALSE
+keyUsage = digitalSignature, nonRepudiation, keyEncipherment, dataEncipherment
+extendedKeyUsage = serverAuth
+subjectAltName = @alt_names
+
+[alt_names]
+DNS.1 = service.lan
+DNS.2 = www.service.lan
+```
+
+And finaly generate the certificate signed from the C.A.
+
+```sh
+openssl x509 -req -in service.csr -CA self-signed-ca-cert.crt -CAkey private-ca.key -CAcreateserial -out service.crt -days 365 -sha256 -extfile service.ext
+```
+
+To use this certificates on Nginx copy the service.crt and
+ service.key file to the server in a directory it can be
+ accessed by the nginx process.
+ **CHANGE PERMITIONS TO 400 AND CHOWN TO ROOT**
+
+```nginx
+ssl_certificate /etc/nginx/certs/service.crt;
+ssl_certificate_key /etc/nginx/certs/vaultwarden.key;
+```
+
+Finally, copy the `self-signed-ca-cert.crt` to every device and authorize it.
+
