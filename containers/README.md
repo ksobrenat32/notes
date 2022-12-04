@@ -57,7 +57,9 @@ podman build -t name:version --format docker .
 
 ## Using a system with selinux and podman
 
-When mounting volumes use :z at the end.
+When mounting volumes use :z if multiple containers need access
+ to the volume or :Z if only that contianer needs access.
+
 Example:
 
 ```bash
