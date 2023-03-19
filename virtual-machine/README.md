@@ -82,8 +82,9 @@ You may need to change architecture if running on aarch64
 - [Debian OldStable](http://ftp.debian.org/debian/dists/oldstable/main/installer-amd64/)
 - [Debian Testing](http://ftp.debian.org/debian/dists/testing/main/installer-amd64/)
 - [CentOS-stream9](http://mirror.stream.centos.org/9-stream/BaseOS/x86_64/os/)
-- [Rocky Linux 9](https://dl.rockylinux.org/pub/rocky/9/BaseOS/x86_64/os/)
-- [Fedora Everything 36](https://mirror.umd.edu/fedora/linux/releases/36/Everything/x86_64/os/)
+- [Alma Linux 8](https://repo.almalinux.org/almalinux/8/BaseOS/x86_64/os/)
+- [Alma Linux 9](https://repo.almalinux.org/almalinux/9/BaseOS/x86_64/os/)
+- [Fedora Everything 37](https://mirror.umd.edu/fedora/linux/releases/37/Everything/x86_64/os/)
 
 ## Converting from raw to qcow2
 

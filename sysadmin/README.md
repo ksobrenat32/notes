@@ -18,7 +18,10 @@ When you run a service, you should consider using a different user
  usually where the aplication is stored.
 
 ```sh
-sudo adduser --home /opt/service --system  --shell /sbin/nologin service
+# No storage needed
+sudo adduser --home /var/empty/service --system  --shell /sbin/nologin service
+# Persistent storage needed
+sudo adduser --home /var/lib/service --system  --shell /sbin/nologin service
 ```
 
 ## Change permission
@@ -160,4 +163,3 @@ firewall-cmd --permanent --remove-service=ssh
 firewall-cmd --permanent --add-port=${sshport}/tcp
 firewall-cmd --reload
 ```
-
