@@ -50,6 +50,22 @@ Example of a for statement, this example does something like `ls`
 for i in ./* ; do echo "$i" ; done
 ```
 
+### Umask
+
+Use umask to temporarily change the default permissions
+
+Owner only read
+
+```sh
+umask 277
+```
+
+Owner only read and write
+
+```sh
+umask 177
+```
+
 ## VIM notes
 
 You can use regex expressions on vim, for example,
