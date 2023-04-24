@@ -135,7 +135,7 @@ mount -o noatime,nodiratime,compress=zstd:6,defaults /dev/mapper/disk /mnt/disk/
 If you use `sudo audit2allow -w -a` and see something like this:
 
 ```output
-avc: denied { read } for pid=13996 comm="sshd" name="authorized_keys" dev="dm-0" ino=4663556
+avc: denied { read } for pid=13996 comm="sshd" name="authorized_keys" dev="dm-0" i
     "sshd" was denied read on a file resource named "authorized_keys".
 scontext=system_u:system_r:sshd_t:s0-s0:c0.c1023
     SELinux context of the sshd process that attempted the denied action.
@@ -163,3 +163,18 @@ firewall-cmd --permanent --remove-service=ssh
 firewall-cmd --permanent --add-port=${sshport}/tcp
 firewall-cmd --reload
 ```
+
+## luks trim fedora silverblue
+
+To check if trim is enabled.
+
+```sh
+sudo dmsetup table
+```
+
+If the output contains allow_discards, its all done, else
+
+```sh
+rpm-ostree kargs --append=rd.luks.options=discard
+```
+
