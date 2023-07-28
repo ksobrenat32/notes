@@ -178,3 +178,42 @@ If the output contains allow_discards, its all done, else
 rpm-ostree kargs --append=rd.luks.options=discard
 ```
 
+## Racknerd SELINUX
+
+Racknerd's VPS RHEL based images do not have SELINUX enabled.
+
+1. Enable NetworkManager
+
+    ```sh
+    systemctl enable NetworkManager
+    ```
+
+2. Update
+
+    ```sh
+    dnf update --allowerasing
+    dnf install vim selinux-policy-targeted selinux-policy-devel policycoreutils
+    ```
+
+3. Autolabel all files
+
+    ```sh
+    touch /.autorelabel
+    ```
+
+4. Set SELINUX as permissive for autolabel and reboot
+
+    ```sh
+    vim /etc/selinux/config
+    reboot
+    ```
+
+5. Check status and set enforcing
+
+    ```sh
+    sestatus
+    vim /etc/selinux/config
+    ```
+
+Now you can setup the new user, config ssh, automatic updates,
+ etc.
