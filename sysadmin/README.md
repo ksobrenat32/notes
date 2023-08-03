@@ -35,12 +35,16 @@ So we use this for directories
 
 ```sh
 find /dir -type d -exec chmod 755 {} \;
+# Readonly
+find /dir -type d -exec chmod 500 {} \;
 ```
 
 And use this for files
 
 ```sh
 find /dir -type f -exec chmod 644 {} \;
+# Read only
+find /dir -type f -exec chmod 400 {} \;
 ```
 
 ## Wireguard
