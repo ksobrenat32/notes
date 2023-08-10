@@ -221,3 +221,36 @@ Racknerd's VPS RHEL based images do not have SELINUX enabled.
 
 Now you can setup the new user, config ssh, automatic updates,
  etc.
+
+## Firewalld geoblocking
+
+If you only need your service in a certain country it is a good
+ idea to block everything except the working zone, to do it:
+
+1. Download the aggregated ips of the countries you need from
+ https://www.ipdeny.com/ipblocks/
+
+2. Create an ipset containing all the IPS
+
+    ```sh
+    firewall-cmd --permanent --new-ipset=IPs --type=hash:net
+    firewall-cmd --permanent --ipset=IPs --add-entries-from-file=1.zone
+    firewall-cmd --permanent --ipset=IPs --add-entries-from-file=2.zone
+    ```
+
+3. Create a zone with rules for the allowed countries
+
+    ```sh
+    firewall-cmd --permanent --new-zone=MYZONE
+    firewall-cmd --permanent --zone=MYZONE --add-source=ipset:IPs
+    firewall-cmd --permanent --zone=MYZONE --add-service=ssh
+    firewall-cmd --permanent --zone=MYZONE --add-port=80/tcp
+    firewall-cmd --reload
+    ```
+
+4. (Optional) If you dont want to allow anthing else you
+ should drop everything by default. *REMEMBER TO KEEP SSH ACCESS*
+
+    ```sh
+    firewall-cmd --permanent --zone=public --set-target=DROP
+    ```
