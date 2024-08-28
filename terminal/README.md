@@ -115,55 +115,6 @@ gpg --edit-key username@example.com
 > save
 ```
 
-## Git notes
-
-You can clone only the latest commit, this will reduce the storage
- needed.
-
-```sh
-git clone --depth=1 repo
-```
-
-When you have cloned a repo and made local changes but you want to
- pull the newest commit, you can stash local changes, pull and
- stash pop
-
-```sh
-git stash
-git pull
-git stash pop
-```
-
-Keeping the last commit changes local
-
-```sh
-git reset --soft HEAD^
-# Make your fixes
-git commit 
-git push -f
-```
-
-Deleting last commit changes
-
-```sh
-git reset --hard HEAD^
-git commit 
-git push -f
-```
-
-If you want to remove multiple commits, you can use:
-
-```sh
-git reset --soft HEAD~2
-```
-
-In case you are using git through http, you can temporarily save
- your credentials.
-
-```sh
-git config --global credential.helper 'cache --timeout 7200'
-```
-
 ## SSH notes
 
 Generate safe ssh key pair
