@@ -138,3 +138,18 @@ write
 # or
 copy running-config startup-config
 ```
+
+### Routing
+
+#### Routing multiple networks
+
+```sh
+configure terminal
+    router rip
+    version 2
+    network <network_address>
+    network <network_address>
+    network <network_address>
+    # ...
+exit
+```
