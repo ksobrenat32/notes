@@ -62,9 +62,19 @@ configure terminal
     interface vlan 1
         description <description>
         ip address <ip_address> <subnet_mask>
+        ip default-gateway <gateway_ip>
         no shutdown
     exit
 exit
+```
+
+#### Remove IP address configuration
+
+```sh
+configure terminal
+    interface <interface_name>
+        no ip address
+    exit
 ```
 
 #### Configure enable password
@@ -89,8 +99,24 @@ exit
 
 ```sh
 configure terminal
-    username <username> secret <password>
+    username <username> password <password> # Plain text password
+    username <username> secret <password> # MD5 hashed password
+    username <username> password 7 <password> # Cisco's type 7 password
 exit
+```
+
+#### Delete user
+
+```sh
+configure terminal
+    no username <username>
+exit
+```
+
+#### Encrypt passwords with cisco hashes
+
+```sh
+service password-encryption
 ```
 
 #### Enable virtual terminal authentication
