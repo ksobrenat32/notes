@@ -101,7 +101,6 @@ exit
 configure terminal
     username <username> password <password> # Plain text password
     username <username> secret <password> # MD5 hashed password
-    username <username> password 7 <password> # Cisco's type 7 password
 exit
 ```
 
