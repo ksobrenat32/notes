@@ -192,3 +192,22 @@ show ip dhcp binding
 # Clear a specific binding
 clear ip dhcp binding 192.168.1.20
 ```
+
+## Miscellaneous
+
+### Simple http server with Python
+
+```sh
+sudo python3 -m http.server 80 # It will show the files on the pwd!
+```
+
+### Simple DNS server with dnsmasq
+
+```conf
+no-resolv
+no-poll
+
+listen-address=127.0.0.1
+listen-address=192.168.50.100 # IP of the server
+address=/cisco.com/192.168.50.225 # DNS record example
+```
