@@ -68,6 +68,25 @@ configure terminal
 exit
 ```
 
+#### DHCP pool
+
+```sh
+configure terminal
+    ip dhcp pool <name>
+        network <network_address> <subnet_mask>
+        default-router <gateway_ip>
+        dns-server <dns_server_ip>
+    exit
+exit
+```
+
+#### MAC address table commands
+
+```sh
+show mac address-table
+clear mac address-table dynamic
+```
+
 #### Remove IP address configuration
 
 ```sh
@@ -145,10 +164,31 @@ copy running-config startup-config
 ```sh
 configure terminal
     router rip
-    version 2
-    network <network_address>
-    network <network_address>
-    network <network_address>
-    # ...
+        version 2
+        network <network_address>
+        network <network_address>
+        network <network_address>
+    exit
 exit
+```
+
+#### Show IP route
+
+```sh
+show ip route
+```
+
+#### DHCP bindings & exclusions
+
+```sh
+# Exclude addresses from DHCP pool
+configure terminal
+    ip dhcp excluded-address 192.168.1.1 192.168.1.10
+exit
+
+# Show DHCP bindings (current leases)
+show ip dhcp binding
+
+# Clear a specific binding
+clear ip dhcp binding 192.168.1.20
 ```
