@@ -149,12 +149,54 @@ configure terminal
 exit
 ```
 
+#### Configure SSH
+
+```sh
+configure terminal
+    ip domain-name <domain_name>
+    crypto key generate rsa
+        1024 # Key size in bits
+    aaa new-model
+    ip ssh authentication-retries 3
+    ip ssh time-out 60
+exit
+```
+
 #### Save configuration
 
 ```sh
 write
 # or
 copy running-config startup-config
+```
+
+### IPv6
+
+#### Enable IPv6 Routing
+```sh
+configure terminal
+    ipv6 unicast-routing
+exit
+```
+
+#### Configure IPv6 on interface
+```sh
+configure terminal
+    interface <interface_name>
+        ipv6 address <ipv6_address>/<prefix_length>
+        no shutdown
+    exit
+exit
+```
+
+#### Configure IPv6 on interface with EUI-64
+```sh
+configure terminal
+    interface <interface_name>
+        ipv6 address <ipv6_network>/<prefix_length> eui-64
+        no shutdown
+    exit
+exit
 ```
 
 ### Routing
@@ -210,4 +252,52 @@ no-poll
 listen-address=127.0.0.1
 listen-address=192.168.50.100 # IP of the server
 address=/cisco.com/192.168.50.225 # DNS record example
+```
+
+### Cisco Packet Tracer Servers
+
+Notes on configuring services on a server in Cisco Packet Tracer.
+
+#### DNS Server
+1.  Go to the server's `Services` tab.
+2.  Select `DNS`.
+3.  Turn the service `On`.
+4.  Create `A` records for your domains (e.g., `www.example.com`) pointing to your web server's IP.
+5.  Create an `MX` record for your mail server (e.g., `mail.example.com`).
+
+#### Email Server (SMTP/POP3)
+1.  Go to the server's `Services` tab.
+2.  Select `Email`.
+3.  Turn `SMTP` and `POP3` services `On`.
+4.  Set a domain name (e.g., `example.com`).
+5.  Create user accounts with usernames and passwords.
+
+#### Web Server (HTTP)
+1.  Go to the server's `Services` tab.
+2.  Select `HTTP`.
+3.  Ensure `HTTP` and `HTTPS` are `On`.
+4.  You can edit the `index.html` file to customize the web page.
+
+#### FTP Server
+1.  Go to the server's `Services` tab.
+2.  Select `FTP`.
+3.  Turn the service `On`.
+4.  Create user accounts with specific permissions (Write, Read, Delete, Rename, List).
+
+##### FTP Client Commands (from a PC's Command Prompt)
+```sh
+# Connect to the FTP server
+ftp <server_ip>
+
+# View files on the server
+dir
+
+# Upload a file to the server
+put <filename>
+
+# Download a file from the server
+get <filename>
+
+# Disconnect from the server
+quit
 ```
