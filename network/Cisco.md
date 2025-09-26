@@ -235,6 +235,111 @@ show ip dhcp binding
 clear ip dhcp binding 192.168.1.20
 ```
 
+### VLANs
+
+#### Show VLANs
+
+```sh
+show vlan brief
+```
+
+#### Create and Name VLANs
+
+```sh
+configure terminal
+    vlan <vlan_id>
+        name <vlan_name>
+    exit
+```
+
+#### Assign Port to VLAN (Access Mode)
+
+```sh
+configure terminal
+    interface <interface_name>
+        switchport mode access
+        switchport access vlan <vlan_id>
+    exit
+```
+
+#### Assign a Range of Ports to a VLAN
+
+```sh
+configure terminal
+    interface range <interface_range>  # e.g., fa0/3-4
+        switchport mode access
+        switchport access vlan <vlan_id>
+    exit
+```
+
+#### Configure Trunk Port
+
+```sh
+configure terminal
+    interface <interface_name>
+        switchport mode trunk
+        # Optional: Specify allowed VLANs
+        switchport trunk allowed vlan <vlan_list> # e.g., 5,7
+    exit
+```
+
+#### Router-on-a-Stick (Inter-VLAN Routing on a Router)
+
+```sh
+configure terminal
+    # Create a subinterface for each VLAN
+    interface <interface_name>.<vlan_id>
+        encapsulation dot1q <vlan_id>
+        ip address <ip_address> <subnet_mask>
+    exit
+
+    # Example for VLAN 7
+    # interface Gi0/0/0.7
+    #    encapsulation dot1q 7
+    #    ip address 192.168.7.254 255.255.255.0
+
+    # Bring up the physical interface
+    interface <interface_name>
+        no shutdown
+    exit
+exit
+```
+
+#### Layer 3 Switch Configuration
+
+##### Enable IP Routing
+
+```sh
+configure terminal
+    ip routing
+exit
+```
+
+##### Configure a Routed Port (L3 Interface)
+
+```sh
+configure terminal
+    interface <interface_name>
+        no switchport
+        ip address <ip_address> <subnet_mask>
+    exit
+```
+
+##### Configure a Switched Virtual Interface (SVI) for Inter-VLAN Routing
+
+```sh
+configure terminal
+    interface vlan <vlan_id>
+        ip address <ip_address> <subnet_mask>
+    exit
+```
+
+##### Show Trunk Interfaces
+
+```sh
+show interfaces trunk
+```
+
 ## Miscellaneous
 
 ### Simple http server with Python
