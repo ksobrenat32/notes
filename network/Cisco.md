@@ -340,6 +340,53 @@ configure terminal
 show interfaces trunk
 ```
 
+### Port Security
+
+#### Show Port Security Status
+
+```sh
+show port-security interface <interface_name>
+```
+
+#### Configure Port Security
+
+```sh
+configure terminal
+    interface <interface_name>
+        # Port must be in access or trunk mode
+        switchport mode access
+        
+        # Enable port security
+        switchport port-security
+        
+        # Set the maximum number of MAC addresses allowed (default is 1)
+        switchport port-security maximum <number>
+        
+        # Set the violation mode (shutdown is default)
+        # shutdown: Disables the port. Must be manually re-enabled.
+        # protect: Drops packets from unknown MACs, no log message.
+        # restrict: Drops packets from unknown MACs, sends a log message and increments violation counter.
+        switchport port-security violation <shutdown | protect | restrict>
+        
+        # Learn MAC addresses dynamically and add them to the running config
+        switchport port-security mac-address sticky
+        
+        # Manually specify a MAC address
+        switchport port-security mac-address <mac_address>
+    exit
+exit
+```
+
+#### Re-enable a Port after a Shutdown Violation
+```sh
+configure terminal
+    interface <interface_name>
+        shutdown
+        no shutdown
+    exit
+exit
+```
+
 ## Miscellaneous
 
 ### Simple http server with Python
