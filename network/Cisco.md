@@ -380,6 +380,70 @@ configure terminal
 exit
 ```
 
+### EtherChannel / Port-channel
+
+```sh
+# Configure EtherChannel (PAgP) on a range of interfaces - mode desirable
+enable
+configure terminal
+    interface range fa0/1-3
+        channel-group 1 mode desirable
+    exit
+
+    interface port-channel 1
+        switchport mode trunk
+    exit
+exit
+```
+
+```sh
+# Configure EtherChannel (PAgP) on a range of interfaces - mode auto
+enable
+configure terminal
+    interface range fa0/1-3
+        channel-group 1 mode auto
+    exit
+
+    interface port-channel 1
+        switchport mode trunk
+    exit
+exit
+```
+
+```sh
+# Configure EtherChannel (LACP) on a range of interfaces - mode active
+enable
+configure terminal
+    interface range fa0/1-3
+        channel-group 1 mode active
+    exit
+
+    interface port-channel 1
+        switchport mode trunk
+    exit
+exit
+```
+
+```sh
+# Configure EtherChannel (LACP) on a range of interfaces - mode passive
+enable
+configure terminal
+    interface range fa0/1-3
+        channel-group 1 mode passive
+    exit
+
+    interface port-channel 1
+        switchport mode trunk
+    exit
+exit
+```
+
+```sh
+# Verify Port-channel and EtherChannel status
+show interface port-channel 1
+show etherchannel summary
+```
+
 ### Port Security
 
 #### Show Port Security Status
