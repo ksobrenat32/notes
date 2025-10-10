@@ -340,6 +340,46 @@ configure terminal
 show interfaces trunk
 ```
 
+#### Spanning Tree
+
+```sh
+# Show general Spanning Tree status
+show spanning-tree
+
+# Show Spanning Tree for a specific VLAN (example VLAN 10)
+show spanning-tree vlan 10
+```
+
+```sh
+configure terminal
+    # Make this switch the root for VLAN X (primary)
+    spanning-tree vlan <vlan_id> root primary
+    # This subtracts 2 × 4096 from the default priority
+
+    # Make this switch the secondary root for VLAN X
+    spanning-tree vlan <vlan_id> root secondary
+    # This subtracts 1 × 4096 from the default priority
+
+    # Manually set the priority (must be a multiple of 4096, range 0-61440)
+    spanning-tree vlan <vlan_id> priority <priority_value>
+exit
+```
+
+> Note: it's 4096 because that step corresponds to the maximum number of VLANs (4096).
+
+```sh
+enable
+configure terminal
+    interface fa0/10
+        # Enable PortFast on a specific interface (example fa0/10)
+        spanning-tree portfast
+
+        # Enable BPDU Guard
+        spanning-tree bpduguard enable
+    exit
+exit
+```
+
 ### Port Security
 
 #### Show Port Security Status
