@@ -220,6 +220,40 @@ exit
 show ip route
 ```
 
+#### Static route
+
+##### Set a static route
+
+```sh
+configure terminal
+    ip route <network> <mask> <next_hop_ip/local_interface> #optional <administrative_distance>
+```
+
+##### Example of a static route
+
+```sh
+configure terminal
+    ip route 192.168.1.0 255.255.255.0 192.168.30.1
+```
+
+##### Example of a default static route
+
+```sh
+configure terminal
+    ip route 0.0.0.0 0.0.0.0 <next_hop_ip>
+```
+
+
+#### Default route in routing protocol
+
+```sh
+configure terminal
+    router rip
+        default-information originate
+    exit
+exit
+```
+
 #### DHCP bindings & exclusions
 
 ```sh
