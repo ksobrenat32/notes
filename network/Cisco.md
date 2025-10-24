@@ -729,3 +729,40 @@ get <filename>
 # Disconnect from the server
 quit
 ```
+
+## HSRP (Hot Standby Router Protocol)
+
+HSRP is a Cisco proprietary redundancy protocol for establishing a fault-tolerant default gateway.
+
+### Basic Configuration
+
+#### Example 1: Higher Priority Router (Active)
+
+```sh
+enable
+configure terminal
+    interface Fa0/0
+        standby 10 ip 192.168.1.100 
+        standby 10 priority 200
+        standby 10 preempt
+    exit
+exit
+```
+
+#### Example 2: Lower Priority Router (Standby)
+
+```sh
+enable
+configure terminal
+    interface Fa0/0
+        standby 10 ip 192.168.1.100 
+        standby 10 priority 100
+    exit
+exit
+```
+
+### Verification
+
+```sh
+show standby
+```
