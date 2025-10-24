@@ -12,6 +12,144 @@ Notes for configuration and management of Cisco devices.
 screen /dev/ttyUSB0 9600
 ```
 
+## DHCP & DHCP snooping
+
+This section contains common commands and recommendations for DHCP configuration on Cisco devices, DHCP helper (relay) and DHCP snooping.
+
+### DHCP client on a router/interface
+
+Use this when the router itself should obtain an IP via DHCP (for example on a WAN link or a lab server acting as a DHCP client):
+
+```sh
+configure terminal
+    interface Fa0/0
+        ip address dhcp
+        no shutdown
+    exit
+exit
+```
+
+### DHCP helper (relay)
+
+When you have a DHCP server on a different subnet, configure the gateway/interface that receives DHCP broadcasts to forward them to the DHCP server:
+
+```sh
+configure terminal
+    interface Fa0/0
+        ip helper-address <dhcp_server_ip>
+    exit
+exit
+```
+
+Notes:
+- `ip helper-address` forwards several UDP services by default (including DHCP). If you need to restrict which services are forwarded, use `ip forward-protocol` or ACLs as appropriate.
+
+### DHCP snooping (protects against rogue DHCP servers)
+
+DHCP snooping filters untrusted DHCP messages and builds a binding table of MAC/IP/port information that can be used by other features (e.g., dynamic ARP inspection).
+
+Basic configuration:
+
+```sh
+configure terminal
+    # Enable DHCP snooping globally
+    ip dhcp snooping
+
+    # Enable on specific VLAN(s)
+    ip dhcp snooping vlan 1
+
+    # Interface that connects to your DHCP server (or trusted uplink) should be trusted
+    interface Fa0/0
+        ip dhcp snooping trust
+    exit
+
+    # Client-facing interfaces should remain untrusted (this is the default)
+    # Do NOT configure 'ip dhcp snooping trust' on access ports that go to clients.
+exit
+```
+
+Key points:
+- Only configure `ip dhcp snooping trust` on ports that lead to DHCP servers or to another switch/router where a DHCP server resides (uplinks).
+- Do not mark client-facing ports as trusted — they should remain untrusted so the switch can drop spoofed DHCP offers.
+- Optionally configure a persistent database (platform-dependent) to retain bindings across reloads (e.g., `ip dhcp snooping database flash:dhcp_snoop.db`).
+
+Verification commands:
+
+```sh
+show ip dhcp snooping
+show ip dhcp snooping binding
+show ip dhcp snooping statistics
+```
+
+### Example: corrected sample router configs (R1, R2, R3)
+
+R1 (edge router with Fa0/0 in 192.168.1.0/24 and serial to R2):
+
+```sh
+enable
+configure terminal
+    hostname R1
+    interface Fa0/0
+        ip address 192.168.1.254 255.255.255.0
+        no shutdown
+    interface Se0/0/0
+        ip address 192.168.2.1 255.255.255.0
+        no shutdown
+
+    router rip
+        version 2
+        network 192.168.1.0
+        network 192.168.2.0
+    exit
+exit
+```
+
+R2 (middle router between R1 and R3):
+
+```sh
+enable
+configure terminal
+    hostname R2
+    interface Se0/0/0
+        ip address 192.168.2.2 255.255.255.0
+        no shutdown
+    interface Se0/0/1
+        ip address 192.168.3.1 255.255.255.0
+        no shutdown
+
+    router rip
+        version 2
+        network 192.168.2.0
+        network 192.168.3.0
+    exit
+exit
+```
+
+R3 (edge router with Fa0/0 in 192.168.4.0/24 and serial to R2):
+
+```sh
+enable
+configure terminal
+    hostname R3
+    interface Fa0/0
+        ip address 192.168.4.254 255.255.255.0
+        no shutdown
+    interface Se0/0/1
+        ip address 192.168.3.2 255.255.255.0
+        no shutdown
+
+    router rip
+        version 2
+        network 192.168.3.0
+        network 192.168.4.0
+    exit
+exit
+```
+
+These examples are cleaned up versions of the original snippets and include the corrected DHCP snooping guidance (trust only uplinks).
+
+---
+
 #### Using telnet
 
 ```sh
