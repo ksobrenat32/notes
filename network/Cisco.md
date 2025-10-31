@@ -766,3 +766,47 @@ exit
 ```sh
 show standby
 ```
+
+## ACLs
+
+### Show ACLs
+
+From 1 to 99 (standard) and from 1300 to 1999 (expanded standard)
+
+```sh
+show access-lists
+```
+
+### Standard ACLs
+
+```sh
+enable
+conf t
+    access-list <num> permit/deny <ip_segment> <wildcard>
+    access-list <num> permit/deny host <ip>
+    access-list <num> permit/deny any
+exit
+
+conf t
+    interface <interface_name>
+    ip access-group <num> IN/OUT
+exit
+```
+
+### Extended ACLs
+
+```sh
+enable
+conf t
+    access-list <num> permit/deny <protocol> <origin_ip_segment> <origin_wildcard> <destiny_ip_segment> <destiny_wildcard> eq <port>
+    access-list <num> permit/deny <protocol> host <origin_ip> host <destiny_ip> eq <port>
+    access-list <num> permit/deny <protocol> any any
+exit
+
+conf t
+    interface <interface_name>
+    ip access-group <num> IN/OUT
+exit
+```
+
+> Note: apply the ACL to the relevant interface with `ip access-group <num> in` or `ip access-group <num> out` depending on whether you want to filter ingress or egress traffic.
