@@ -810,3 +810,35 @@ exit
 ```
 
 > Note: apply the ACL to the relevant interface with `ip access-group <num> in` or `ip access-group <num> out` depending on whether you want to filter ingress or egress traffic.
+
+## NAT
+
+### Show NAT translations
+
+```sh
+show ip nat translations
+```
+
+### Example: PAT (overload) using an ACL to match inside hosts
+
+```sh
+# Permit a specific host (or use a standard ACL that matches a network)
+access-list <n> permit host <host_ip>
+
+# Translate source addresses matched by ACL <n> to the IP of the external interface (overload/PAT)
+ip nat inside source list <ACL_num> interface <interface_to_translate> overload
+```
+
+### Interface roles
+
+```sh
+# The interface towards the internet (public/WAN)
+interface <interface_name>
+  ip nat outside
+
+# The interface towards the internal network (LAN)
+interface <interface_name>
+  ip nat inside
+```
+
+> Note: replace `<ACL_num>`/`<n>` with the ACL number or name you create. Use `show ip nat statistics` and `show ip nat translations` to verify operation.
