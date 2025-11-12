@@ -392,6 +392,57 @@ configure terminal
 exit
 ```
 
+## Enrutamiento OSPF
+
+Configurar OSPF con ejemplos comunes (loopback, áreas, router-id):
+
+```sh
+# Loopback interface (useful for router-id stability)
+configure terminal
+    interface loopback 1
+        ip address 192.168.3.1 255.255.255.255
+    exit
+exit
+```
+
+```sh
+# OSPF - area 0 example advertising networks 192.168.1.0/24 and 192.168.3.0/24
+configure terminal
+    router ospf 1
+        network 192.168.1.0 0.0.0.255 area 0
+        network 192.168.3.0 0.0.0.255 area 0
+    exit
+exit
+```
+
+```sh
+# OSPF with explicit router-id
+configure terminal
+    router ospf 1
+        network 192.168.1.0 0.0.0.255 area 0
+        router-id 1.1.1.1
+    exit
+exit
+```
+
+```sh
+# Example: put a network in area 1
+configure terminal
+    router ospf 1
+        network 192.168.2.0 0.0.0.255 area 1
+    exit
+exit
+```
+
+Comandos de verificación OSPF / enrutamiento:
+
+```sh
+show ip route
+show ip ospf neighbor
+show ip ospf database
+```
+
+
 #### DHCP bindings & exclusions
 
 ```sh
