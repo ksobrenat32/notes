@@ -308,6 +308,39 @@ write
 copy running-config startup-config
 ```
 
+#### Clock and NTP configuration
+
+```sh
+# Set the clock manually (in privileged EXEC mode)
+clock set HH:MM:SS DAY MONTH YEAR
+# Example: clock set 14:30:00 14 November 2025
+```
+
+```sh
+# Configure NTP server (device will sync time from this server)
+configure terminal
+    ntp server <ip>
+exit
+```
+
+```sh
+# Configure this device as an NTP master (authoritative time source)
+configure terminal
+    ntp master
+exit
+```
+
+```sh
+# Show current clock time
+show clock
+
+# Show NTP status and synchronization
+show ntp status
+
+# Show NTP associations (configured NTP servers and their status)
+show ntp associations
+```
+
 ### IPv6
 
 #### Enable IPv6 Routing
