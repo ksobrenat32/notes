@@ -341,6 +341,35 @@ show ntp status
 show ntp associations
 ```
 
+#### Syslog configuration
+
+```sh
+# Send log messages to a syslog server
+configure terminal
+    logging host <ip>
+exit
+```
+
+```sh
+# Set the severity level of messages sent to syslog server
+# Levels: 0=emergencies, 1=alerts, 2=critical, 3=errors, 4=warnings, 5=notifications, 6=informational, 7=debugging
+configure terminal
+    logging trap <message_level>
+exit
+```
+
+```sh
+# Add timestamps to log messages with millisecond precision
+configure terminal
+    service timestamps log datetime msec
+exit
+```
+
+```sh
+# Show logging configuration and buffered logs
+show logging
+```
+
 ### IPv6
 
 #### Enable IPv6 Routing
