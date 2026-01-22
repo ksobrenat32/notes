@@ -1,0 +1,29 @@
+site_name: My Notes
+nav:
+    - Home: index.md
+    - Backup: backup/README.md
+    - Containers: containers/README.md
+    - DNS:
+        - README: dns/README.md
+        - blocky-config.yml: dns/blocky-config.yml
+        - unbound.conf: dns/unbound.conf
+    - Git: git/README.md
+    - Network:
+        - README: network/README.md
+        - Cisco: network/Cisco.md
+    - Sysadmin:
+        - README: sysadmin/README.md
+        - sshd_config: sysadmin/sshd_config
+        - wg-gen.sh: sysadmin/wg-gen.sh
+        - CoreOS:
+            - README: sysadmin/coreOS/README.md
+            - basic.bu: sysadmin/coreOS/basic.bu
+        - Systemd Examples:
+            - app.service: sysadmin/systemd_examples/app.service
+            - freedns.service: sysadmin/systemd_examples/freedns.service
+            - freedns.timer: sysadmin/systemd_examples/freedns.timer
+            - rclone.service: sysadmin/systemd_examples/rclone.service
+    - Terminal: terminal/README.md
+    - Virtual Machine: virtual-machine/README.md
+    - Web: web/README.md
+theme: readthedocs
