@@ -6,14 +6,16 @@ nav:
     - Containers: containers/container-notes.md
     - DNS:
         - Overview: dns/dns-notes.md
-        - blocky-config.yml: dns/configs/blocky-config.yml
-        - unbound.conf: dns/configs/unbound.conf
+        - Configs:
+            - blocky-config.yml: dns/configs/blocky-config.yml
+            - unbound.conf: dns/configs/unbound.conf
     - Git: git/git-notes.md
     - Network:
         - Overview: network/networking-notes.md
         - Cisco: network/cisco-notes.md
-        - interfaces: network/configs/interfaces
-        - nftables.conf: network/configs/nftables.conf
+        - Configs:
+            - interfaces: network/configs/interfaces
+            - nftables.conf: network/configs/nftables.conf
     - Sysadmin:
         - Overview: sysadmin/sysadmin-notes.md
         - SELinux: sysadmin/selinux-notes.md
@@ -25,8 +27,10 @@ nav:
             - freedns.service: sysadmin/systemd_examples/freedns.service
             - freedns.timer: sysadmin/systemd_examples/freedns.timer
             - rclone.service: sysadmin/systemd_examples/rclone.service
-        - sshd_config: sysadmin/configs/sshd_config
-        - wg-gen.sh: sysadmin/scripts/wg-gen.sh
+        - Configs:
+            - sshd_config: sysadmin/configs/sshd_config
+        - Scripts:
+            - wg-gen.sh: sysadmin/scripts/wg-gen.sh
     - Virtual Machine: virtual-machine/virtual-machine-notes.md
     - Web: web/web-server-notes.md
 theme: readthedocs
