@@ -18,6 +18,9 @@ nav:
             - nftables.conf: network/configs/nftables.conf
     - Sysadmin:
         - Overview: sysadmin/sysadmin-notes.md
+        - Databases: sysadmin/databases-notes.md
+        - ERPNext: sysadmin/erpnext-notes.md
+        - WordPress: sysadmin/wordpress-notes.md
         - SELinux: sysadmin/selinux-notes.md
         - CoreOS:
             - Fedora coreOS: sysadmin/fedora-coreos/fedora-coreos-notes.md
