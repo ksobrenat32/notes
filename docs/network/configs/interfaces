@@ -1,0 +1,21 @@
+# /etc/network/interfaces
+
+# Source any interfaces defined in /etc/network/interfaces.d
+source /etc/network/interfaces.d/*
+
+# The loopback network interface
+auto lo
+iface lo inet loopback
+
+# The primary network interface
+allow-hotplug enp1s0
+iface enp1s0 inet static
+
+auto br0
+# Bridge interface with static IP
+iface br0 inet static
+    address 192.168.122.220
+    netmask 255.255.255.0
+    gateway 192.168.122.1
+    bridge_ports enp1s0
+    up /usr/sbin/brctl stp br0 on

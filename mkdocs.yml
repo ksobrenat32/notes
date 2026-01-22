@@ -1,29 +1,32 @@
 site_name: My Notes
 nav:
     - Home: index.md
-    - Backup: backup/README.md
-    - Containers: containers/README.md
+    - Backup: backup/backup-notes.md
+    - CLI: cli/cli-notes.md
+    - Containers: containers/container-notes.md
     - DNS:
-        - README: dns/README.md
-        - blocky-config.yml: dns/blocky-config.yml
-        - unbound.conf: dns/unbound.conf
-    - Git: git/README.md
+        - Overview: dns/dns-notes.md
+        - blocky-config.yml: dns/configs/blocky-config.yml
+        - unbound.conf: dns/configs/unbound.conf
+    - Git: git/git-notes.md
     - Network:
-        - README: network/README.md
-        - Cisco: network/Cisco.md
+        - Overview: network/networking-notes.md
+        - Cisco: network/cisco-notes.md
+        - interfaces: network/configs/interfaces
+        - nftables.conf: network/configs/nftables.conf
     - Sysadmin:
-        - README: sysadmin/README.md
-        - sshd_config: sysadmin/sshd_config
-        - wg-gen.sh: sysadmin/wg-gen.sh
+        - Overview: sysadmin/sysadmin-notes.md
+        - SELinux: sysadmin/selinux-notes.md
         - CoreOS:
-            - README: sysadmin/coreOS/README.md
-            - basic.bu: sysadmin/coreOS/basic.bu
+            - Fedora coreOS: sysadmin/fedora-coreos/fedora-coreos-notes.md
+            - basic.bu: sysadmin/fedora-coreos/basic.bu
         - Systemd Examples:
             - app.service: sysadmin/systemd_examples/app.service
             - freedns.service: sysadmin/systemd_examples/freedns.service
             - freedns.timer: sysadmin/systemd_examples/freedns.timer
             - rclone.service: sysadmin/systemd_examples/rclone.service
-    - Terminal: terminal/README.md
-    - Virtual Machine: virtual-machine/README.md
-    - Web: web/README.md
+        - sshd_config: sysadmin/configs/sshd_config
+        - wg-gen.sh: sysadmin/scripts/wg-gen.sh
+    - Virtual Machine: virtual-machine/virtual-machine-notes.md
+    - Web: web/web-server-notes.md
 theme: readthedocs

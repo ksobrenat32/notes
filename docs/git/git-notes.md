@@ -1,8 +1,8 @@
 # Git notes
 
-I have given a git workshop a lot of times, so it is time to add some notes here.
+## Initial setup
 
-## Creating ssh keys
+### Creating ssh keys
 
 To use git with ssh, you need to create ssh keys. Here is how you can do it:
 
@@ -14,8 +14,7 @@ ssh-keygen -o -a 100 -t ed25519 -f /path/to/key -C "your@email.com"
 ssh-keygen -p -f /path/to/key
 ```
 
-
-## Configuring git
+### Configuring git
 
 It is important to configure git before using it. Here are some basic configurations:
 
@@ -33,7 +32,9 @@ git config --global core.editor "vim"
 git config --global color.ui auto
 ```
 
-## Creating a repository
+## Working with repositories
+
+### Creating a repository
 
 To create a repository, you can either turn a directory into a git repository or clone a repository.
 
@@ -48,7 +49,7 @@ git clone <url>
 git clone --depth=1 <url>
 ```
 
-## Staging files
+s## Staging files
 
 Git has a staging area where you can add files before committing them.
 
@@ -66,7 +67,7 @@ git reset <file>
 git reset
 ```
 
-## Committing changes
+### Committing changes
 
 After adding files to the staging area, you can commit them. This will create a snapshot of the repository at that point.
 
@@ -78,7 +79,7 @@ git commit -m "Message"
 git commit
 ```
 
-## Checking the status
+### Checking the status
 
 You can check the status of the repository at any time. Which files are staged, which files are not, etc.
 
@@ -87,7 +88,7 @@ You can check the status of the repository at any time. Which files are staged, 
 git status
 ```
 
-## Syncing changes
+s## Syncing changes
 
 You can sync changes with a remote repository. This is useful when working with others.
 
@@ -107,7 +108,7 @@ git fetch <remote>
 # Merge changes from a remote repository
 git merge <remote>/<branch>
 ```
-## Logging
+### Logging
 
 You can check the history of the repository at any time.
 
@@ -125,7 +126,7 @@ git diff <commit> <commit>
 git diff HEAD
 ```
 
-## Moving around
+### Moving around
 
 You can move around the history of the repository.
 
@@ -143,7 +144,7 @@ git checkout HEAD^
 git checkout HEAD@{1}
 ```
 
-## Reverting changes
+### Reverting changes
 
 You can revert changes in the repository from a specific commit.
 
@@ -161,7 +162,7 @@ git reset --soft <commit>
 git reset --hard <commit>
 ```
 
-## Stashing changes
+### Stashing changes
 
 You can stash changes in the repository. This is useful when you want to work on something else.
 
@@ -179,7 +180,7 @@ git stash list
 git stash drop
 ```
 
-## Branching
+### Branching
 
 Branching is a powerful feature of git. You can create branches to work on new features, bug fixes, etc. without affecting the main branch.
 

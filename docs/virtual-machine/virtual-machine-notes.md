@@ -1,6 +1,8 @@
-# Notes for creating virtual machines
+# Virtual Machine Notes
 
-## Configuring virsh for non-root user
+## Installation and Setup
+
+### Configuring virsh for non-root user
 
 1. Add your user to group libvirt
 2. Write the configuration to ~/.config/libvirt/libvirt.conf
@@ -11,7 +13,7 @@ mkdir -p ~/.config/libvirt/
 echo 'uri_default = "qemu:///system"' | tee -a ~/.config/libvirt/libvirt.conf
 ```
 
-## Enable Virtualization
+### Enable Virtualization
 
 For installing virtual machines without graphics we need
  to have some things installed and then enable libvirt daemon
@@ -25,13 +27,15 @@ dnf install @virtualization
 systemctl enable libvirtd
 ```
 
-## Create a disk image for the virtual machine
+## Manage virtual machines with virsh
+
+### Create a disk image for the virtual machine
 
 ```bash
 qemu-img create -f qcow2 ./name.qcow2 8G
 ```
 
-## Run the virtual machine from serial with virt install
+### Run the virtual machine from serial with virt install
 
 The important thing is using some parameters with the
  virt install, disable the graphics and enable a serial console.
@@ -55,7 +59,7 @@ If you are using an ISO, you can use the cdrom parameter
 --cdrom ./example.iso \
 ```
 
-### Debian example
+**Debian example:**
 
 ```bash
 virt-install \
@@ -74,7 +78,7 @@ virt-install \
     --extra-args 'console=ttyS0,115200n8 serial'
 ```
 
-### URLS
+**URLS:**
 
 You may need to change architecture if running on aarch64
 
@@ -86,7 +90,7 @@ You may need to change architecture if running on aarch64
 - [Alma Linux 9](https://repo.almalinux.org/almalinux/9/BaseOS/x86_64/os/)
 - [Fedora Everything 37](https://mirror.umd.edu/fedora/linux/releases/37/Everything/x86_64/os/)
 
-## Converting from raw to qcow2
+### Converting from raw to qcow2
 
 For converting raw (in this case a linux volume) to a qcow2 we
  must sparse it, so it does not use lots of space, in order to
@@ -109,7 +113,7 @@ virt-sparsify /dev/mapper/VG-VM --convert qcow2 /out/VM.qcow2 --check-tmpdir fai
 
 The last flag is to check if the size of /tmp is enough.
 
-## Mount qcow2 image
+### Mount qcow2 image
 
 For mounting:
 
@@ -128,7 +132,7 @@ qemu-nbd --disconnect /dev/nbd0
 rmmod nbd
 ```
 
-## Mount raw image or linux volume
+### Mount raw image or linux volume
 
 Create a loop device with
 
@@ -156,7 +160,7 @@ umount /mnt/mypartition
 losetup -d /dev/loop0p1
 ```
 
-## Mount with virtiofsd
+### Mount with virtiofsd
 
 I had a problem, I needed to mount a btrfs disk on a rhel9 vm,
  this is not supported, so I thought it would be a great idea
@@ -165,14 +169,14 @@ I had a problem, I needed to mount a btrfs disk on a rhel9 vm,
  secure way and it has some problems, so use it at your own
  risk.
 
-### Upgrade Debian libvirt packages
+#### Upgrade Debian libvirt packages
 
 Debian 11 bullseye has an old libvirt package, so you need to
  upgrade them from backports, the packages are `qemu qemu-kvm
  qemu-system qemu-utils libvirt-clients libvirt-daemon-system
  virtinst` and after the upgrade you should restart libvirtd
 
-### Run virtiofsd as a systemd service
+#### Run virtiofsd as a systemd service
 
 In order to run virtiofsd in a socket, you should run it separated
  this can be done with a systemd service:
@@ -197,7 +201,7 @@ The extra options are 'xattr' for enabling those, 'source'
  'modcaps' so it is able to set trusted xattr. The service
  should run as root.
 
-### Add the xml to the vm
+#### Add the xml to the vm
 
 With `virsh edit` you should edit the domain xml to declare the
  socket

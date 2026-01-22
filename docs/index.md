@@ -1,14 +1,30 @@
 # Ksobrenatural's notes
 
-Some of my notes and useful commands, they help me remembering
- flags and some commands structure or use cases so I do not
- have to browse to find answers.
+Some of my notes and useful commands that help me remember flags, command structures, and use cases without searching around.
 
-- [Backup](./backup): Tools for backup purpose
-- [Containers](./containers): Managing containers, mainly podman
-- [DNS](./dns): Setting up a dns server, blocky and unbound
-- [Network](./network): Setting up network configuration
-- [Sysadmin](./sysadmin): Maintain a linux server, tips and tricks
-- [Terminal](./terminal): Basic terminal tools
-- [Virtual Machine](./virtual-machine): Virtual Machines management
-- [Web](./web): Setting up webserver including ssl with letsencrypt
+## Navigation
+
+- [Backup](./backup/backup-notes.md)
+- [CLI](./cli/cli-notes.md)
+- [Containers](./containers/container-notes.md)
+- [DNS](./dns/dns-notes.md)
+  - [blocky-config.yml](./dns/configs/blocky-config.yml)
+  - [unbound.conf](./dns/configs/unbound.conf)
+- [Git](./git/git-notes.md)
+- [Network](./network/networking-notes.md)
+  - [Cisco](./network/cisco-notes.md)
+  - [interfaces](./network/configs/interfaces)
+  - [nftables.conf](./network/configs/nftables.conf)
+- [Sysadmin](./sysadmin/sysadmin-notes.md)
+  - [SELinux](./sysadmin/selinux-notes.md)
+  - [Fedora coreOS](./sysadmin/fedora-coreos/fedora-coreos-notes.md)
+    - [basic.bu](./sysadmin/fedora-coreos/basic.bu)
+  - [Systemd Examples](./sysadmin/systemd_examples/app.service)
+    - [app.service](./sysadmin/systemd_examples/app.service)
+    - [freedns.service](./sysadmin/systemd_examples/freedns.service)
+    - [freedns.timer](./sysadmin/systemd_examples/freedns.timer)
+    - [rclone.service](./sysadmin/systemd_examples/rclone.service)
+  - [sshd_config](./sysadmin/configs/sshd_config)
+  - [wg-gen.sh](./sysadmin/scripts/wg-gen.sh)
+- [Virtual Machine](./virtual-machine/virtual-machine-notes.md)
+- [Web](./web/web-server-notes.md)

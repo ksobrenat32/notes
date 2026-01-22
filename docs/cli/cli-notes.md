@@ -66,6 +66,17 @@ Owner only read and write
 umask 177
 ```
 
+### Find
+
+Find is a very useful command to search files and
+ execute commands on them.
+
+**Find all `.log` files and delete them**
+
+```sh
+find /path/to/search -type f -name "*.log" -exec rm -f {} \;
+```
+
 ## VIM notes
 
 You can use regex expressions on vim, for example,
@@ -94,37 +105,3 @@ You can also snigger by typing `:Sex` to invoke a horizontal split.
 4. Press d to cut (or y to copy).
 5. Move to where you would like to paste.
 6. Press P to paste before the cursor, or p to paste after.
-
-## GPG notes
-
-To export secret key for backup
-
-```sh
-gpg -o private-backup.gpg --export-options backup --export-secret-keys username@example.com
-```
-
-And to import the backup key
-
-```sh
-gpg --import-options restore --import private.gpg
-
-gpg --edit-key username@example.com
-
-> trust
-> 5 (ultimately)
-> save
-```
-
-## SSH notes
-
-Generate safe ssh key pair
-
-```sh
-ssh-keygen -o -a 100 -t ed25519 -f ~/.ssh/id_ed25519 -C "user@email.com"
-```
-
-Add a password to an existing key
-
-```sh
-ssh-keygen -p -f keyfile
-```

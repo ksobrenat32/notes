@@ -1,4 +1,3 @@
-
 # Butane file for a basic fedora core OS server
 # You need to use butane to generate the ignition file
 # Remember to change the values in '#{}'
