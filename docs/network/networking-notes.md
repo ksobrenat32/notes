@@ -101,3 +101,39 @@ If you only need your service in a certain country it is a good
 
 > Keep in mind this has CPU/RAM usage implications depending on the
 > amount of IPs you are blocking/allowing.
+
+## Multithreading on network interfaces
+
+I hit a situation where I noticed that my server with multiple
+cores was not using all of them to handle network traffic.
+
+After some research I found out that enabling multiqueue on the
+network interface would help with that.
+
+1. Check that your hardware supports it (I recommend intel cards with RSS (Receive Side Scaling))
+
+```sh
+ethtool -i <interface>
+```
+
+2. Install and start `irqbalance`, this service will help distribute
+the interrupts across all the cores.
+
+3. Optimize sysctl settings for better network performance by adding
+the following lines to `/etc/sysctl.d/99-server-tuning.conf`:
+
+```conf
+#/etc/sysctl.d/99-server-tuning.conf 
+# Increase the backlog of connections waiting to be accepted
+# (Helps prevents timeouts during traffic spikes)
+net.core.netdev_max_backlog = 5000
+net.core.somaxconn = 4096
+
+# Enable TCP BBR Congestion Control
+# (Much better at handling the variable speeds of mirror downloads)
+net.core.default_qdisc = fq
+net.ipv4.tcp_congestion_control = bbr
+
+# reuse timewait sockets (helps with Tor's many connections)
+net.ipv4.tcp_tw_reuse = 1
+```
