@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Containers - My Notes</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Containers";
+        var mkdocs_page_input_path = "containers/container-notes.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> My Notes
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../backup/backup-notes/">Backup</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../cli/cli-notes/">CLI</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">Containers</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#managing-containers">Managing containers</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#basic-commands">Basic commands</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#using-quadlet">Using quadlet</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#building-images">Building images</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#tips-and-tricks">Tips and tricks</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#fast-disposable-container">Fast disposable container</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#using-a-system-with-selinux-and-podman">Using a system with selinux and podman</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#extrating-binaries-from-container">Extrating binaries from container</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#extracting-binaries-for-vaultwarden">Extracting binaries for Vaultwarden</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#ping-from-rootless-container">Ping from rootless container</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#enable-docker-registry-on-podman">Enable docker registry on podman</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#problems-with-selinux">Problems with SELINUX</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">DNS</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../dns/dns-notes/">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Configs</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../dns/configs/blocky-config.yml">blocky-config.yml</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../dns/configs/unbound.conf">unbound.conf</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../git/git-notes/">Git</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Network</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../network/networking-notes/">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../network/cisco-notes/">Cisco</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Configs</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../network/configs/interfaces">interfaces</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../network/configs/nftables.conf">nftables.conf</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Sysadmin</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../sysadmin/sysadmin-notes/">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../sysadmin/databases-notes/">Databases</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../sysadmin/erpnext-notes/">ERPNext</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../sysadmin/wordpress-notes/">WordPress</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../sysadmin/selinux-notes/">SELinux</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >CoreOS</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../sysadmin/fedora-coreos/fedora-coreos-notes/">Fedora coreOS</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../sysadmin/fedora-coreos/basic.bu">basic.bu</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Systemd Examples</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../sysadmin/systemd_examples/app.service">app.service</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../sysadmin/systemd_examples/freedns.service">freedns.service</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../sysadmin/systemd_examples/freedns.timer">freedns.timer</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../sysadmin/systemd_examples/rclone.service">rclone.service</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Configs</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../sysadmin/configs/sshd_config">sshd_config</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Scripts</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../sysadmin/scripts/wg-gen.sh">wg-gen.sh</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../virtual-machine/virtual-machine-notes/">Virtual Machine</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../web/web-server-notes/">Web</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">My Notes</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Containers</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="container-notes">Container notes</h1>
+<p>Some useful commands and notes for container management with podman/docker.</p>
+<h2 id="managing-containers">Managing containers</h2>
+<h3 id="basic-commands">Basic commands</h3>
+<p><strong>Listing containers:</strong></p>
+<pre><code class="language-sh">podman ps -a
+</code></pre>
+<p><strong>Deleting all containers:</strong></p>
+<pre><code class="language-sh">podman rm -a
+</code></pre>
+<p><strong>Deleting all container images:</strong></p>
+<pre><code class="language-sh">podman rmi -a
+</code></pre>
+<p><strong>Viewing logs with timestamps and follow:</strong></p>
+<pre><code class="language-sh">podman logs --tail 50 --follow --timestamps name-of-the-container
+</code></pre>
+<p><strong>Executing a command inside a running container:</strong></p>
+<pre><code class="language-sh">podman exec -it name-of-the-container bash
+</code></pre>
+<h3 id="using-quadlet">Using quadlet</h3>
+<p>Quadlet is the new way of managing containers with systemd.</p>
+<p><strong>Basic quadlet example:</strong></p>
+<pre><code class="language-sh">[Container]
+Image=docker.io/library/postgres:16
+AutoUpdate=registry
+PublishPort=5432:5432
+Volume=%h/volumes/test-db:/var/lib/postgresql/data:Z
+Environment=POSTGRES_PASSWORD=CHANGE_ME
+
+[Service]
+Restart=always
+
+[Install]
+WantedBy=default.target
+</code></pre>
+<h2 id="building-images">Building images</h2>
+<p><strong>Building image in podman:</strong></p>
+<pre><code class="language-sh">podman build -t name:version .
+</code></pre>
+<p><strong>Building image in podman with docker format:</strong></p>
+<pre><code class="language-bash">podman build -t name:version --format docker .
+</code></pre>
+<h2 id="tips-and-tricks">Tips and tricks</h2>
+<h3 id="fast-disposable-container">Fast disposable container</h3>
+<p>In some cases I need to test some command in a distro, the fastest
+ way of doing this is through a podman container, you can change
+ fedora for the distro of your choice.</p>
+<pre><code class="language-sh">podman run -it --rm fedora bash
+</code></pre>
+<h3 id="using-a-system-with-selinux-and-podman">Using a system with selinux and podman</h3>
+<p>When mounting volumes use :z if multiple containers need access
+ to the volume or :Z if only that contasner needs access.</p>
+<p>Example:</p>
+<pre><code class="language-sh">podman run -it --rm -v ./thing/:/thing:z alpine sh
+</code></pre>
+<p>or in a docker-compose.yml:</p>
+<pre><code class="language-sh">- ./postgresdata:/var/lib/postgresql/data:z
+</code></pre>
+<h3 id="extrating-binaries-from-container">Extrating binaries from container</h3>
+<p>This is useful for example for a raspberry, when you
+ want to run software without containers but there
+ is no oficial binaries for aarch64 released only
+ precompiled container, you can extract the binary
+ from a oficial container image.</p>
+<blockquote>
+<p>Read the Containerfile/Dockerfile first to know what are the dependencies</p>
+</blockquote>
+<h3 id="extracting-binaries-for-vaultwarden">Extracting binaries for Vaultwarden</h3>
+<ol>
+<li>Pull the image for the architecture you want, be careful with tags</li>
+<li>Create but not start a container based on the image</li>
+<li>Copy the needed binaries</li>
+<li>Delete container and image</li>
+</ol>
+<pre><code class="language-sh">podman pull --platform linux/arm64 vaultwarden/server
+podman create --name vw vaultwarden/server
+podman cp vw:/vaultwarden .
+podman cp vw:/web-vault .
+podman rm vw
+podman rmi vaultwarden/server:latest
+</code></pre>
+<h3 id="ping-from-rootless-container">Ping from rootless container</h3>
+<p>In case you want to be able to use ping inside rootless containers,
+ you can run:</p>
+<pre><code class="language-sh">echo -e 'net.ipv4.ping_group_range=0 165535' | sudo tee /etc/sysctl.d/podman-ping.conf
+</code></pre>
+<h3 id="enable-docker-registry-on-podman">Enable docker registry on podman</h3>
+<p>In some distributions podman package it is not included the docker
+ registry so if you want to use it, you must specify it in the
+ configuration.</p>
+<pre><code class="language-sh">mkdir -p $HOME/.config/containers/
+echo -e &quot;[registries.search]\nregistries = ['docker.io']&quot; | tee $HOME/.config/containers/registries.conf
+ ```
+
+### Enable podman socket
+
+This is useful for using podman with tools that
+ expect a docker socket like portainer or docker-compose.
+
+For a rootless user:
+
+```sh
+systemctl --user enable --now podman.socket
+export DOCKER_HOST=///run/user/$UID/podman/podman.sock
+</code></pre>
+<h3 id="problems-with-selinux">Problems with SELINUX</h3>
+<p>I had a problem when using the linuxserver's swag image
+ where the image could not make the needed chown. To
+ solve it, I added this to the podman command.</p>
+<pre><code class="language-sh">--security-opt label=disable
+</code></pre>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../../cli/cli-notes/" class="btn btn-neutral float-left" title="CLI"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../../dns/dns-notes/" class="btn btn-neutral float-right" title="Overview">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../../cli/cli-notes/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../../dns/dns-notes/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
