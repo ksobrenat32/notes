@@ -420,6 +420,12 @@ configure terminal
     interface vlan <vlan_id>
         ip address <ip_address> <subnet_mask>
     exit
+
+    # Trunk on switch side
+    interface <interface_name>
+        switchport trunk encapsulation dot1q
+        switchport mode trunk
+    exit
 exit
 ```
 
