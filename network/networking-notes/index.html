@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Overview - My Notes</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Overview";
+        var mkdocs_page_input_path = "network/networking-notes.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> My Notes
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../backup/backup-notes/">Backup</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../cli/cli-notes/">CLI</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../containers/container-notes/">Containers</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">DNS</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../dns/dns-notes/">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Configs</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../dns/configs/blocky-config.yml">blocky-config.yml</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../dns/configs/unbound.conf">unbound.conf</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../git/git-notes/">Git</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Network</span></p>
+              <ul class="current">
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Overview</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#firewalld">FirewallD</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#basic-commands">Basic commands</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#firewalld-geoblocking">Firewalld geoblocking</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#multithreading-on-network-interfaces">Multithreading on network interfaces</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../cisco-notes/">Cisco</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Configs</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../configs/interfaces">interfaces</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../configs/nftables.conf">nftables.conf</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Sysadmin</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../sysadmin/sysadmin-notes/">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../sysadmin/databases-notes/">Databases</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../sysadmin/erpnext-notes/">ERPNext</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../sysadmin/wordpress-notes/">WordPress</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../sysadmin/selinux-notes/">SELinux</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >CoreOS</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../sysadmin/fedora-coreos/fedora-coreos-notes/">Fedora coreOS</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../sysadmin/fedora-coreos/basic.bu">basic.bu</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Systemd Examples</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../sysadmin/systemd_examples/app.service">app.service</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../sysadmin/systemd_examples/freedns.service">freedns.service</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../sysadmin/systemd_examples/freedns.timer">freedns.timer</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../sysadmin/systemd_examples/rclone.service">rclone.service</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Configs</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../sysadmin/configs/sshd_config">sshd_config</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Scripts</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../sysadmin/scripts/wg-gen.sh">wg-gen.sh</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../virtual-machine/virtual-machine-notes/">Virtual Machine</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../web/web-server-notes/">Web</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">My Notes</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Network</li>
+      <li class="breadcrumb-item active">Overview</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="networking-notes">Networking notes</h1>
+<h2 id="firewalld">FirewallD</h2>
+<p>FirewallD is a dynamic firewall management tool with support for network zones.</p>
+<h3 id="basic-commands">Basic commands</h3>
+<p><strong>List zones:</strong></p>
+<pre><code class="language-bash">firewall-cmd --get-zones
+</code></pre>
+<p><strong>Get active zones:</strong></p>
+<pre><code class="language-bash">firewall-cmd --get-active-zones
+</code></pre>
+<p><strong>Add service to zone:</strong></p>
+<pre><code class="language-bash">firewall-cmd --zone=&lt;zone&gt; --add-service=&lt;service&gt; --permanent
+firewall-cmd --reload
+</code></pre>
+<p><strong>Add port to zone:</strong></p>
+<pre><code class="language-bash">firewall-cmd --zone=&lt;zone&gt; --add-port=&lt;port&gt;/tcp --permanent
+firewall-cmd --reload
+</code></pre>
+<p><strong>Remove service from zone:</strong></p>
+<pre><code class="language-bash">firewall-cmd --zone=&lt;zone&gt; --remove-service=&lt;service&gt; --permanent
+firewall-cmd --reload
+</code></pre>
+<p><strong>Remove port from zone:</strong></p>
+<pre><code class="language-bash">firewall-cmd --zone=&lt;zone&gt; --remove-port=&lt;port&gt;/tcp --permanent
+firewall-cmd --reload
+</code></pre>
+<p><strong>List services in zone:</strong></p>
+<pre><code class="language-bash">firewall-cmd --zone=&lt;zone&gt; --list-all
+</code></pre>
+<p><strong>Add a source to a zone:</strong></p>
+<pre><code class="language-bash">firewall-cmd --zone=&lt;zone&gt; --add-source=&lt;source_ip_or_network&gt; --permanent
+firewall-cmd --reload
+</code></pre>
+<p><strong>Remove a source from a zone:</strong></p>
+<pre><code class="language-bash">firewall-cmd --zone=&lt;zone&gt; --remove-source=&lt;source_ip_or_network&gt; --permanent
+firewall-cmd --reload
+</code></pre>
+<h3 id="firewalld-geoblocking">Firewalld geoblocking</h3>
+<p>If you only need your service in a certain country it is a good
+ idea to block everything except the working zone, to do it:</p>
+<ol>
+<li>
+<p>Download the aggregated ips of the countries you need from
+ https://www.ipdeny.com/ipblocks/</p>
+</li>
+<li>
+<p>Create an ipset containing all the IPS</p>
+<p><code>sh
+firewall-cmd --permanent --new-ipset=IPs --type=hash:net
+firewall-cmd --permanent --ipset=IPs --add-entries-from-file=1.zone
+firewall-cmd --permanent --ipset=IPs --add-entries-from-file=2.zone</code></p>
+</li>
+<li>
+<p>Create a zone with rules for the allowed countries</p>
+<p><code>sh
+firewall-cmd --permanent --new-zone=MYZONE
+firewall-cmd --permanent --zone=MYZONE --add-source=ipset:IPs
+firewall-cmd --permanent --zone=MYZONE --add-service=ssh
+firewall-cmd --permanent --zone=MYZONE --add-port=80/tcp
+firewall-cmd --reload</code></p>
+</li>
+<li>
+<p>(Optional) If you dont want to allow anthing else you
+ should drop everything by default. <em>REMEMBER TO KEEP SSH ACCESS</em></p>
+<p><code>sh
+firewall-cmd --permanent --zone=public --set-target=DROP</code></p>
+</li>
+</ol>
+<blockquote>
+<p>Keep in mind this has CPU/RAM usage implications depending on the
+amount of IPs you are blocking/allowing.</p>
+</blockquote>
+<h2 id="multithreading-on-network-interfaces">Multithreading on network interfaces</h2>
+<p>I hit a situation where I noticed that my server with multiple
+cores was not using all of them to handle network traffic.</p>
+<p>After some research I found out that enabling multiqueue on the
+network interface would help with that.</p>
+<ol>
+<li>Check that your hardware supports it (I recommend intel cards with RSS (Receive Side Scaling))</li>
+</ol>
+<pre><code class="language-sh">ethtool -i &lt;interface&gt;
+</code></pre>
+<ol>
+<li>
+<p>Install and start <code>irqbalance</code>, this service will help distribute
+the interrupts across all the cores.</p>
+</li>
+<li>
+<p>Optimize sysctl settings for better network performance by adding
+the following lines to <code>/etc/sysctl.d/99-server-tuning.conf</code>:</p>
+</li>
+</ol>
+<pre><code class="language-conf">#/etc/sysctl.d/99-server-tuning.conf 
+# Increase the backlog of connections waiting to be accepted
+# (Helps prevents timeouts during traffic spikes)
+net.core.netdev_max_backlog = 5000
+net.core.somaxconn = 4096
+
+# Enable TCP BBR Congestion Control
+# (Much better at handling the variable speeds of mirror downloads)
+net.core.default_qdisc = fq
+net.ipv4.tcp_congestion_control = bbr
+
+# reuse timewait sockets (helps with Tor's many connections)
+net.ipv4.tcp_tw_reuse = 1
+</code></pre>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../../git/git-notes/" class="btn btn-neutral float-left" title="Git"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../cisco-notes/" class="btn btn-neutral float-right" title="Cisco">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../../git/git-notes/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../cisco-notes/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
