@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Web - My Notes</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Web";
+        var mkdocs_page_input_path = "web/web-server-notes.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> My Notes
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../backup/backup-notes/">Backup</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../cli/cli-notes/">CLI</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../containers/container-notes/">Containers</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">DNS</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../dns/dns-notes/">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Configs</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../dns/configs/blocky-config.yml">blocky-config.yml</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../dns/configs/unbound.conf">unbound.conf</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../git/git-notes/">Git</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Network</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../network/networking-notes/">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../network/cisco-notes/">Cisco</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Configs</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../network/configs/interfaces">interfaces</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../network/configs/nftables.conf">nftables.conf</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Sysadmin</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../sysadmin/sysadmin-notes/">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../sysadmin/databases-notes/">Databases</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../sysadmin/erpnext-notes/">ERPNext</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../sysadmin/wordpress-notes/">WordPress</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../sysadmin/selinux-notes/">SELinux</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >CoreOS</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../sysadmin/fedora-coreos/fedora-coreos-notes/">Fedora coreOS</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../sysadmin/fedora-coreos/basic.bu">basic.bu</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Systemd Examples</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../sysadmin/systemd_examples/app.service">app.service</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../sysadmin/systemd_examples/freedns.service">freedns.service</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../sysadmin/systemd_examples/freedns.timer">freedns.timer</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../sysadmin/systemd_examples/rclone.service">rclone.service</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Configs</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../sysadmin/configs/sshd_config">sshd_config</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Scripts</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../sysadmin/scripts/wg-gen.sh">wg-gen.sh</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../virtual-machine/virtual-machine-notes/">Virtual Machine</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">Web</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#nginx">Nginx</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#serving-files">Serving files</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#authentication">Authentication</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#common-error-codes">Common error codes</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#certbot">Certbot</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#using-private-ssl-certificates-and-certification-authority">Using private SSL certificates and Certification Authority</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">My Notes</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Web</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="web-server-notes">Web server notes</h1>
+<h2 id="nginx">Nginx</h2>
+<p>Basic nginx.conf this redirects all http to https
+ and uses <code>conf.d</code> to configure other servers</p>
+<pre><code class="language-nginx">user  nginx;
+worker_processes auto;
+pid        /var/run/nginx.pid;
+
+
+events {
+    worker_connections  1024;
+}
+
+http {
+    sendfile on;
+    tcp_nopush on;
+    types_hash_max_size 2048;
+    include /etc/nginx/mime.types;
+    default_type application/octet-stream;
+    gzip on;
+
+    # Security
+
+    # Certbot recommends : 
+    ssl_session_cache shared:le_nginx_SSL:10m;
+    ssl_session_timeout 1440m;
+    ssl_session_tickets off;
+    ssl_protocols TLSv1.2 TLSv1.3;
+    ssl_prefer_server_ciphers off;
+    ssl_ciphers &quot;ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY1305:DHE-RSA-AES128-GCM-SHA256:DHE-RSA-AES256-GCM-SHA384&quot;;
+
+    server_tokens off;
+    client_header_buffer_size 1k;
+    large_client_header_buffers 2 1k;
+    add_header Strict-Transport-Security &quot;max-age=15768000; includeSubDomains&quot; always;
+    add_header X-Frame-Options SAMEORIGIN;
+    add_header X-Content-Type-Options nosniff;
+    add_header X-XSS-Protection &quot;1; mode=block&quot;;
+
+    # Logs
+    access_log /var/log/nginx/access.log;
+    error_log /var/log/nginx/error.log;
+
+    # Default
+    server {
+        listen 80 default_server;
+        listen [::]:80 default_server;
+        server_name _;
+        # Redirect to https
+        return 301 https://$host$request_uri;
+    }
+
+    # Include services
+    include /etc/nginx/conf.d/*.conf;
+
+}
+</code></pre>
+<p>For running services you need to create a service.conf on
+ the conf.d directory, something like this</p>
+<pre><code class="language-nginx">server {
+    server_name your.domain;
+
+    listen 443 ssl http2;
+
+    ssl_certificate /etc/letsencrypt/live/your.domain/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/your.domain/privkey.pem;
+    include /etc/letsencrypt/options-ssl-nginx.conf;
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem;
+
+    location / {
+        proxy_http_version 1.1;
+        proxy_pass http://127.0.0.1:8000;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+
+}
+</code></pre>
+<p>For cases when you need to send more data through nginx.</p>
+<pre><code class="language-nginx">server {
+    server_name bigfiles.domain.tld;
+    client_max_body_size 512M;
+    ...
+}
+</code></pre>
+<p>If you only want it on IPv6</p>
+<pre><code class="language-nginx">server {
+    listen [::]:80 default_server ipv6only=on;
+    server_name _;
+    ...
+}
+</code></pre>
+<p>For proxy pass with selinux use:</p>
+<pre><code class="language-bash">setsebool -P httpd_can_network_connect on 
+</code></pre>
+<p>Problems with files permissions and selinux , solve them with</p>
+<pre><code class="language-bash">sudo grep nginx /var/log/audit/audit.log | audit2allow -M nginx &gt; nginx.te \ 
+&amp;&amp; sudo semodule -i nginx.pp
+</code></pre>
+<h3 id="serving-files">Serving files</h3>
+<pre><code class="language-nginx">server {
+    ...
+    root /directorie/to/serve;
+    autoindex on;
+    autoindex_exact_size off;
+    autoindex_localtime on;
+}
+</code></pre>
+<h3 id="authentication">Authentication</h3>
+<p>To generate a password file</p>
+<blockquote>
+<p>Only use -c when creating the file</p>
+</blockquote>
+<pre><code class="language-bash">sudo htpasswd -c /etc/nginx/.htpasswd first_user
+</code></pre>
+<p>Add this to your server config</p>
+<pre><code class="language-nginx">server {
+    auth_basic &quot;Private sharing files&quot;;
+    auth_basic_user_file /etc/nginx/.htpasswd; 
+}
+</code></pre>
+<h3 id="common-error-codes">Common error codes</h3>
+<table>
+<thead>
+<tr>
+<th>code</th>
+<th>class</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1xx</td>
+<td>Informational</td>
+</tr>
+<tr>
+<td>2xx</td>
+<td>Success</td>
+</tr>
+<tr>
+<td>3xx</td>
+<td>Redirection</td>
+</tr>
+<tr>
+<td>4xx</td>
+<td>Client Error</td>
+</tr>
+<tr>
+<td>5xx</td>
+<td>Server Error</td>
+</tr>
+</tbody>
+</table>
+<p><code>return 400;</code> - Bad Request: the HTTP request that was sent to the
+ server has invalid syntax.</p>
+<p><code>return 401;</code> - Unauthorized: that the user trying to access
+ the resource has not been authenticated or has not been
+ authenticated correctly.</p>
+<p><code>return 403;</code> - Forbidden: that the user made a valid request but
+ the server is refusing to serve the request, due to a lack of
+ permission to access the requested resource</p>
+<p><code>return 404;</code> - Not found: that the user is able to communicate
+ with the server but it is unable to locate the requested file
+ or resource.</p>
+<p><code>return 444;</code> - Not return anything</p>
+<p><code>return 500;</code> - Internal server error: that server cannot process
+ the request for an unknown reason. Sometimes this code will
+ appear when more specific 5xx errors are more appropriate.</p>
+<p><code>return 502;</code> - Bad Gateway: that the server is a gateway or proxy
+ server, and it is not receiving a valid response from the backend
+ servers that should actually fulfill the request.</p>
+<p><code>return 503;</code> - Gateway timeout: that the server is a gateway or
+ proxy server, and it is not receiving a response from the backend
+ servers within the allowed time period.</p>
+<h2 id="certbot">Certbot</h2>
+<p>Let's encrypt, has a service so you can easily get ssl certificates,
+ the basic cerbot command can be installed with</p>
+<pre><code class="language-bash">sudo dnf install certbot
+# If you want to use pluggins like nginx do it with pip
+sudo dnf install python3 augeas-libs
+sudo python3 -m venv /opt/certbot/
+sudo /opt/certbot/bin/pip install --upgrade pip
+sudo /opt/certbot/bin/pip install certbot
+sudo ln -s /opt/certbot/bin/certbot /usr/bin/certbot
+echo &quot;0 0,12 * * * root /usr/bin/certbot renew -q&quot; | sudo tee -a /etc/crontab &gt; /dev/null
+</code></pre>
+<p>It is possible to get a certificate modifying a TXT record on the dns,
+ the advantage is that you can use wildcards like <code>*.domain.tld</code> and
+ there is no need to have a web server running or exposed. But you will
+ have to renew this certificates manually every 90 days.</p>
+<pre><code class="language-bash">sudo certbot --manual --preferred-challenges dns certonly
+</code></pre>
+<p>The automated way is having a webserver exposed so letsencrypt can verify
+ you own the domain, the requirements is having nginx up and running and
+ public DNS records pointing to that server, but the advantage is that those
+ certificates will automatically renew.</p>
+<pre><code class="language-sh">sudo /opt/certbot/bin/pip install certbot-nginx
+sudo certbot certonly --nginx -d sub.domain.tld
+</code></pre>
+<h2 id="using-private-ssl-certificates-and-certification-authority">Using private SSL certificates and Certification Authority</h2>
+<blockquote>
+<p>From <a href="https://github.com/dani-garcia/vaultwarden/wiki/Private-CA-and-self-signed-certs-that-work-with-Chrome">vaultwarden wiki</a></p>
+</blockquote>
+<p>In cases you want ssl certificates but not need them to be public,
+ you can sign your own ones and only trust them on your devices,
+ this way there is no need of external authorities like letsencrypt
+ and free use of any domain you want, even if not registrated. In
+ the example, <code>example.lan</code> is the domain being <code>example</code> the name of
+ the service</p>
+<p>The first step is creating the key of the Certification Authority.</p>
+<pre><code class="language-sh">openssl genpkey -algorithm RSA -aes128 -out private-ca.key -outform PEM -pkeyopt rsa_keygen_bits:2048
+</code></pre>
+<p>And for creating the certificate, that will work for 10 years, this
+ is the certificate that need to be trusted by the client devices.</p>
+<pre><code class="language-sh">openssl req -x509 -new -nodes -sha256 -days 3650 -key private-ca.key -out self-signed-ca-cert.crt
+</code></pre>
+<p>In order to create domain certificates, create a key</p>
+<pre><code class="language-sh">openssl genpkey -algorithm RSA -out service.key -outform PEM -pkeyopt rsa_keygen_bits:2048
+</code></pre>
+<p>And create a certificate request</p>
+<pre><code class="language-sh">openssl req -new -key service.key -out service.csr
+</code></pre>
+<p>Fill the configuration file <code>service.ext</code>, change the dns
+ alt_names accordingly.</p>
+<pre><code class="language-ext">authorityKeyIdentifier=keyid,issuer
+basicConstraints=CA:FALSE
+keyUsage = digitalSignature, nonRepudiation, keyEncipherment, dataEncipherment
+extendedKeyUsage = serverAuth
+subjectAltName = @alt_names
+
+[alt_names]
+DNS.1 = service.lan
+DNS.2 = www.service.lan
+</code></pre>
+<p>And finaly generate the certificate signed from the C.A.</p>
+<pre><code class="language-sh">openssl x509 -req -in service.csr -CA self-signed-ca-cert.crt -CAkey private-ca.key -CAcreateserial -out service.crt -days 365 -sha256 -extfile service.ext
+</code></pre>
+<p>To use this certificates on Nginx copy the service.crt and
+ service.key file to the server in a directory it can be
+ accessed by the nginx process.
+ <strong>CHANGE PERMITIONS TO 400 AND CHOWN TO ROOT</strong></p>
+<pre><code class="language-nginx">ssl_certificate /etc/nginx/certs/service.crt;
+ssl_certificate_key /etc/nginx/certs/vaultwarden.key;
+</code></pre>
+<p>Finally, copy the <code>self-signed-ca-cert.crt</code> to every device and authorize it.</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../../virtual-machine/virtual-machine-notes/" class="btn btn-neutral float-left" title="Virtual Machine"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../../virtual-machine/virtual-machine-notes/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

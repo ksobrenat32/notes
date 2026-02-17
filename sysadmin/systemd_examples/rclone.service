@@ -1,0 +1,24 @@
+[Unit]
+Description=Gmedia RClone Mount Service
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=notify
+
+ExecStart=/usr/bin/rclone mount \
+  --config=/root/.config/rclone/rclone.conf \
+  --allow-other \
+  --vfs-cache-mode=full \
+#Edit --vfs-cache-max-size=<your_size> \
+#Edit  <your remote>: /path/to/target/directorie
+#Edit ExecStartPost=<Services that require this mount>
+#Edit ExecStop=/bin/fusermount -uz /path/to/target/directorie
+
+Restart=on-failure
+RestartSec=5
+StartLimitInterval=60s
+StartLimitBurst=3
+
+[Install]
+WantedBy=multi-user.target

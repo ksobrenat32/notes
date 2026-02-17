@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>CLI - My Notes</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "CLI";
+        var mkdocs_page_input_path = "cli/cli-notes.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> My Notes
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../backup/backup-notes/">Backup</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">CLI</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#bash-notes">Bash notes</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#send-to-background">Send to background</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#for-statement">for statement</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#umask">Umask</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#find">Find</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#vim-notes">VIM notes</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#how-to-copy-paste-on-vim">How to copy paste on vim</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../containers/container-notes/">Containers</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">DNS</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../dns/dns-notes/">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Configs</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../dns/configs/blocky-config.yml">blocky-config.yml</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../dns/configs/unbound.conf">unbound.conf</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../git/git-notes/">Git</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Network</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../network/networking-notes/">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../network/cisco-notes/">Cisco</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Configs</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../network/configs/interfaces">interfaces</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../network/configs/nftables.conf">nftables.conf</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Sysadmin</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../sysadmin/sysadmin-notes/">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../sysadmin/databases-notes/">Databases</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../sysadmin/erpnext-notes/">ERPNext</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../sysadmin/wordpress-notes/">WordPress</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../sysadmin/selinux-notes/">SELinux</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >CoreOS</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../sysadmin/fedora-coreos/fedora-coreos-notes/">Fedora coreOS</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../sysadmin/fedora-coreos/basic.bu">basic.bu</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Systemd Examples</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../sysadmin/systemd_examples/app.service">app.service</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../sysadmin/systemd_examples/freedns.service">freedns.service</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../sysadmin/systemd_examples/freedns.timer">freedns.timer</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../sysadmin/systemd_examples/rclone.service">rclone.service</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Configs</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../sysadmin/configs/sshd_config">sshd_config</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Scripts</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../sysadmin/scripts/wg-gen.sh">wg-gen.sh</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../virtual-machine/virtual-machine-notes/">Virtual Machine</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../web/web-server-notes/">Web</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">My Notes</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">CLI</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="command-line-use-notes">Command line use notes</h1>
+<h2 id="bash-notes">Bash notes</h2>
+<p>For compatibility, use this as shebang on scripts:</p>
+<pre><code class="language-sh">#!/usr/bin/env bash
+</code></pre>
+<p>Temporarily disable the bash history</p>
+<pre><code class="language-sh">set +o history
+</code></pre>
+<p>Some useful parameters on scripts</p>
+<pre><code class="language-sh">set -e # exit on error
+set -u # exit when undeclared variables exist
+set -x # trace what gets executed
+</code></pre>
+<p>As a recommendation, use variables like: <code>"${var}"</code> to avoid
+ problems with the names</p>
+<h3 id="send-to-background">Send to background</h3>
+<p>End commands with <code>&amp;</code> to execute on background</p>
+<p>When the command is already running, use <code>ctrl+z</code> to turn
+ it into zombie (in background but not executing)</p>
+<p>With <code>jobs</code> you can print already running processes</p>
+<p>With <code>fg</code> you can bring back zombies processes from background
+ to foreground and they start executing, with <code>bg</code> you can
+ let zombie processes execute in the background.</p>
+<blockquote>
+<p>Remember you can use <code>kill -9 PID</code> to kill a proccess
+To obtain the PID, use <code>ps ax</code>
+Use <code>renice</code> to adjust priority of processes</p>
+</blockquote>
+<h3 id="for-statement"><code>for</code> statement</h3>
+<p>Example of a for statement, this example does something like <code>ls</code></p>
+<pre><code class="language-sh">for i in ./* ; do echo &quot;$i&quot; ; done
+</code></pre>
+<h3 id="umask">Umask</h3>
+<p>Use umask to temporarily change the default permissions</p>
+<p>Owner only read</p>
+<pre><code class="language-sh">umask 277
+</code></pre>
+<p>Owner only read and write</p>
+<pre><code class="language-sh">umask 177
+</code></pre>
+<h3 id="find">Find</h3>
+<p>Find is a very useful command to search files and
+ execute commands on them.</p>
+<p><strong>Find all <code>.log</code> files and delete them</strong></p>
+<pre><code class="language-sh">find /path/to/search -type f -name &quot;*.log&quot; -exec rm -f {} \;
+</code></pre>
+<h2 id="vim-notes">VIM notes</h2>
+<p>You can use regex expressions on vim, for example,
+ to delete all comment lines:</p>
+<pre><code class="language-vim">:g/^\s*#/d
+</code></pre>
+<p>You can invoke netrw which is kinda file explorer</p>
+<pre><code class="language-vim">:Explore - opens netrw in the current window
+:Sexplore - opens netrw in a horizontal split
+:Vexplore - opens netrw in a vertical split
+</code></pre>
+<p>You can also snigger by typing <code>:Sex</code> to invoke a horizontal split.</p>
+<h3 id="how-to-copy-paste-on-vim">How to copy paste <a href="https://vim.fandom.com/wiki/Copy,_cut_and_paste">on vim</a></h3>
+<ol>
+<li>Position the cursor where you want to begin cutting.</li>
+<li>Press v to select characters, or uppercase V to select whole lines,
+ or Ctrl-v to select rectangular blocks (use Ctrl-q if Ctrl-v is mapped to paste).</li>
+<li>Move the cursor to the end of what you want to cut.</li>
+<li>Press d to cut (or y to copy).</li>
+<li>Move to where you would like to paste.</li>
+<li>Press P to paste before the cursor, or p to paste after.</li>
+</ol>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../../backup/backup-notes/" class="btn btn-neutral float-left" title="Backup"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../../containers/container-notes/" class="btn btn-neutral float-right" title="Containers">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../../backup/backup-notes/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../../containers/container-notes/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

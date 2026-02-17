@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Cisco - My Notes</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Cisco";
+        var mkdocs_page_input_path = "network/cisco-notes.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> My Notes
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../backup/backup-notes/">Backup</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../cli/cli-notes/">CLI</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../containers/container-notes/">Containers</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">DNS</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../dns/dns-notes/">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Configs</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../dns/configs/blocky-config.yml">blocky-config.yml</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../dns/configs/unbound.conf">unbound.conf</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../git/git-notes/">Git</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Network</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../networking-notes/">Overview</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Cisco</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#1-access-management">1. Access &amp; Management</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#physical-connection-console">Physical Connection (Console)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#user-password-management">User &amp; Password Management</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#system-administration">System Administration</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#global-setup">Global Setup</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#saving-configuration">Saving Configuration</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#clock-ntp">Clock &amp; NTP</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#syslog-configuration">Syslog Configuration</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#2-interface-configuration">2. Interface Configuration</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#ipv4-configuration">IPv4 Configuration</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#view-interfaces">View Interfaces</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#configure-router-interface">Configure Router Interface</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#configure-switch-interface-svi">Configure Switch Interface (SVI)</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#remove-ip-address">Remove IP Address</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#ipv6-configuration">IPv6 Configuration</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#enable-ipv6-routing">Enable IPv6 Routing</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#configure-interface">Configure Interface</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#configure-interface-eui-64">Configure Interface (EUI-64)</a>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#3-switching-layer-2">3. Switching (Layer 2)</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#vlans-trunking">VLANs &amp; Trunking</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#basic-commands">Basic Commands</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#create-vlans">Create VLANs</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#access-port">Access Port</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#range-of-ports">Range of Ports</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#trunk-port">Trunk Port</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#mac-address-table">MAC Address Table</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#spanning-tree-protocol-stp">Spanning Tree Protocol (STP)</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#etherchannel-port-channel">EtherChannel (Port-Channel)</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#port-security">Port Security</a>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#4-routing-layer-3">4. Routing (Layer 3)</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#basic-routing-commands">Basic Routing Commands</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#static-routing">Static Routing</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#static-route">Static Route</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#default-static-route">Default Static Route</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#inter-vlan-routing">Inter-VLAN Routing</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#router-on-a-stick-roas">Router-on-a-Stick (ROAS)</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#layer-3-switch">Layer 3 Switch</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#ripv2">RIPv2</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#ospf">OSPF</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#basic-configuration">Basic Configuration</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#virtual-link-connecting-ospf-areas">Virtual Link (Connecting OSPF Areas)</a>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#5-network-services">5. Network Services</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#dhcp-dynamic-host-configuration-protocol">DHCP (Dynamic Host Configuration Protocol)</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#dhcp-server-pool">DHCP Server (Pool)</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#dhcp-client">DHCP Client</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#dhcp-helper-relay">DHCP Helper (Relay)</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#dhcp-verification">DHCP Verification</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#dhcp-snooping-security">DHCP Snooping (Security)</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#nat-network-address-translation">NAT (Network Address Translation)</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#interface-roles">Interface Roles</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#pat-overload">PAT (Overload)</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#verify-nat">Verify NAT</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#acls-access-control-lists">ACLs (Access Control Lists)</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#standard-acl-1-99">Standard ACL (1-99)</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#extended-acl-100-199">Extended ACL (100-199)</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#apply-to-interface">Apply to Interface</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#verify-acls">Verify ACLs</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#hsrp-redundancy">HSRP (Redundancy)</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#active-router-higher-priority">Active Router (Higher Priority)</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#standby-router">Standby Router</a>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#6-miscellaneous-lab-tools">6. Miscellaneous &amp; Lab Tools</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#simple-python-http-server">Simple Python HTTP Server</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#dnsmasq-simple-dns-server">Dnsmasq (Simple DNS Server)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#cisco-packet-tracer-servers">Cisco Packet Tracer Servers</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#service-setup">Service Setup</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#ftp-client-commands-pc">FTP Client Commands (PC)</a>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Configs</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../configs/interfaces">interfaces</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../configs/nftables.conf">nftables.conf</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Sysadmin</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../sysadmin/sysadmin-notes/">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../sysadmin/databases-notes/">Databases</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../sysadmin/erpnext-notes/">ERPNext</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../sysadmin/wordpress-notes/">WordPress</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../sysadmin/selinux-notes/">SELinux</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >CoreOS</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../sysadmin/fedora-coreos/fedora-coreos-notes/">Fedora coreOS</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../sysadmin/fedora-coreos/basic.bu">basic.bu</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Systemd Examples</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../sysadmin/systemd_examples/app.service">app.service</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../sysadmin/systemd_examples/freedns.service">freedns.service</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../sysadmin/systemd_examples/freedns.timer">freedns.timer</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../sysadmin/systemd_examples/rclone.service">rclone.service</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Configs</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../sysadmin/configs/sshd_config">sshd_config</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Scripts</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../sysadmin/scripts/wg-gen.sh">wg-gen.sh</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../virtual-machine/virtual-machine-notes/">Virtual Machine</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../web/web-server-notes/">Web</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">My Notes</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Network</li>
+      <li class="breadcrumb-item active">Cisco</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="cisco-notes">Cisco Notes</h1>
+<p>Notes created from CCNA preparation material and personal experience with Cisco devices.</p>
+<hr />
+<h2 id="1-access-management">1. Access &amp; Management</h2>
+<h3 id="physical-connection-console">Physical Connection (Console)</h3>
+<p>You need a USB-to-serial adapter or a serial cable to connect to the console port of a Cisco device.</p>
+<p><strong>Using screen:</strong></p>
+<pre><code class="language-sh">screen /dev/ttyUSB0 9600
+</code></pre>
+<p><strong>Using minicom:</strong></p>
+<pre><code class="language-sh">minicom -D /dev/ttyUSB0 -b 9600
+</code></pre>
+<p><strong>Using Telnet/SSH:</strong></p>
+<pre><code class="language-sh">telnet &lt;ip_address&gt;
+ssh -l &lt;username&gt; &lt;ip_address&gt;
+</code></pre>
+<p><strong>Enable Console Authentication</strong></p>
+<pre><code class="language-sh">configure terminal
+    line console 0
+        login local
+    exit
+exit
+</code></pre>
+<p><strong>Enable VTY (Virtual Terminal) Authentication</strong></p>
+<pre><code class="language-sh">configure terminal
+    line vty 0 15
+        login local
+        transport input telnet # If login local is not working
+        transport input ssh # If login local is not working
+    exit
+exit
+</code></pre>
+<p><strong>Configure SSH Server</strong></p>
+<pre><code class="language-sh">configure terminal
+    ip domain-name &lt;domain_name&gt;
+    crypto key generate rsa
+        1024 # Key size in bits
+    aaa new-model
+    ip ssh authentication-retries 3
+    ip ssh time-out 60
+exit
+</code></pre>
+<h3 id="user-password-management">User &amp; Password Management</h3>
+<p><strong>Create/Delete Users</strong></p>
+<pre><code class="language-sh">configure terminal
+    username &lt;username&gt; password &lt;password&gt; # Plain text password
+    username &lt;username&gt; secret &lt;password&gt;   # MD5 hashed password
+    no username &lt;username&gt;                  # Delete user
+exit
+</code></pre>
+<p><strong>Secure Passwords</strong></p>
+<pre><code class="language-sh">configure terminal
+    enable secret &lt;password&gt;    # Set privileged exec password
+    service password-encryption # Encrypt all plain text passwords
+exit
+</code></pre>
+<h3 id="system-administration">System Administration</h3>
+<h4 id="global-setup">Global Setup</h4>
+<pre><code class="language-sh">enable
+configure terminal
+    hostname &lt;new_hostname&gt;     # Set the hostname
+    no ip domain-lookup         # Disable DNS lookup to prevent typos acting as domain lookups
+exit
+</code></pre>
+<h4 id="saving-configuration">Saving Configuration</h4>
+<pre><code class="language-sh">write
+# or
+copy running-config startup-config
+</code></pre>
+<h4 id="clock-ntp">Clock &amp; NTP</h4>
+<pre><code class="language-sh"># Set the clock manually (Privileged EXEC)
+clock set HH:MM:SS DAY MONTH YEAR
+# Example: clock set 14:30:00 14 November 2025
+
+# Configure NTP
+configure terminal
+    ntp server &lt;ip&gt;  # Sync time from this server
+    ntp master       # Act as authoritative time source
+exit
+
+# Verification
+show clock
+show ntp status
+show ntp associations
+</code></pre>
+<h3 id="syslog-configuration">Syslog Configuration</h3>
+<pre><code class="language-sh">configure terminal
+    logging host &lt;ip&gt;
+    logging trap &lt;message_level&gt; 
+    # Levels: 0=emerg, 1=alert, 2=crit, 3=err, 4=warn, 5=notif, 6=info, 7=debug
+
+    # Add timestamps with millisecond precision
+    service timestamps log datetime msec
+exit
+
+show logging
+</code></pre>
+<h2 id="2-interface-configuration">2. Interface Configuration</h2>
+<h3 id="ipv4-configuration">IPv4 Configuration</h3>
+<h4 id="view-interfaces">View Interfaces</h4>
+<pre><code class="language-sh">show ip interface brief
+</code></pre>
+<h4 id="configure-router-interface">Configure Router Interface</h4>
+<pre><code class="language-sh">configure terminal
+    interface &lt;interface_name&gt;
+        description &lt;description&gt;
+        ip address &lt;ip_address&gt; &lt;subnet_mask&gt;
+        no shutdown
+    exit
+exit
+</code></pre>
+<h4 id="configure-switch-interface-svi">Configure Switch Interface (SVI)</h4>
+<pre><code class="language-bash">configure terminal
+    interface vlan 1
+        description &lt;description&gt;
+        ip address &lt;ip_address&gt; &lt;subnet_mask&gt;
+        ip default-gateway &lt;gateway_ip&gt;
+        no shutdown
+    exit
+exit
+</code></pre>
+<h4 id="remove-ip-address">Remove IP Address</h4>
+<pre><code class="language-bash">configure terminal
+    interface &lt;interface_name&gt;
+        no ip address
+    exit
+</code></pre>
+<h3 id="ipv6-configuration">IPv6 Configuration</h3>
+<h4 id="enable-ipv6-routing">Enable IPv6 Routing</h4>
+<pre><code class="language-bash">configure terminal
+    ipv6 unicast-routing
+exit
+</code></pre>
+<h4 id="configure-interface">Configure Interface</h4>
+<pre><code class="language-bash">configure terminal
+    interface &lt;interface_name&gt;
+        ipv6 address &lt;ipv6_address&gt;/&lt;prefix_length&gt;
+        no shutdown
+    exit
+exit
+</code></pre>
+<h4 id="configure-interface-eui-64">Configure Interface (EUI-64)</h4>
+<pre><code class="language-bash">configure terminal
+    interface &lt;interface_name&gt;
+        ipv6 address &lt;ipv6_network&gt;/&lt;prefix_length&gt; eui-64
+        no shutdown
+    exit
+exit
+</code></pre>
+<h2 id="3-switching-layer-2">3. Switching (Layer 2)</h2>
+<h3 id="vlans-trunking">VLANs &amp; Trunking</h3>
+<h4 id="basic-commands">Basic Commands</h4>
+<pre><code class="language-bash">show vlan brief
+</code></pre>
+<h4 id="create-vlans">Create VLANs</h4>
+<pre><code class="language-bash">configure terminal
+    vlan &lt;vlan_id&gt;
+        name &lt;vlan_name&gt;
+    exit
+</code></pre>
+<h4 id="access-port">Access Port</h4>
+<pre><code class="language-bash">configure terminal
+    interface &lt;interface_name&gt;
+        switchport mode access
+        switchport access vlan &lt;vlan_id&gt;
+    exit
+</code></pre>
+<h4 id="range-of-ports">Range of Ports</h4>
+<pre><code class="language-bash">configure terminal
+    interface range &lt;interface_range&gt;  # e.g., fa0/3-4
+        switchport mode access
+        switchport access vlan &lt;vlan_id&gt;
+    exit
+</code></pre>
+<h4 id="trunk-port">Trunk Port</h4>
+<pre><code class="language-bash">configure terminal
+    interface &lt;interface_name&gt;
+        switchport mode trunk
+        switchport trunk allowed vlan &lt;vlan_list&gt; # Optional e.g., 5,7
+    exit
+
+# Verify
+show interfaces trunk
+</code></pre>
+<h4 id="mac-address-table">MAC Address Table</h4>
+<pre><code class="language-bash">show mac address-table
+clear mac address-table dynamic
+</code></pre>
+<h4 id="spanning-tree-protocol-stp">Spanning Tree Protocol (STP)</h4>
+<h5 id="verification">Verification</h5>
+<pre><code class="language-bash">show spanning-tree
+show spanning-tree vlan &lt;vlan_id&gt;
+</code></pre>
+<h5 id="root-bridge-configuration">Root Bridge Configuration</h5>
+<pre><code class="language-bash">configure terminal
+    # Primary Root (Subtracts 2 × 4096 from default priority)
+    spanning-tree vlan &lt;vlan_id&gt; root primary
+
+    # Secondary Root (Subtracts 1 × 4096 from default priority)
+    spanning-tree vlan &lt;vlan_id&gt; root secondary
+
+    # Manual Priority (Must be multiple of 4096)
+    spanning-tree vlan &lt;vlan_id&gt; priority &lt;priority_value&gt;
+exit
+</code></pre>
+<h5 id="portfast-bpdu-guard">PortFast &amp; BPDU Guard</h5>
+<pre><code class="language-bash">configure terminal
+    interface fa0/10
+        spanning-tree portfast
+        spanning-tree bpduguard enable
+    exit
+exit
+</code></pre>
+<h4 id="etherchannel-port-channel">EtherChannel (Port-Channel)</h4>
+<h5 id="configuration-modes">Configuration Modes</h5>
+<p>PAgP (Cisco): desirable (active) / auto (passive)</p>
+<p>LACP (Open): active / passive</p>
+<pre><code class="language-bash">configure terminal
+    interface range fa0/1-3
+        channel-group 1 mode &lt;desirable/auto/active/passive&gt;
+    exit
+
+    interface port-channel 1
+        switchport mode trunk
+    exit
+exit
+
+# Verify
+show interface port-channel 1
+show etherchannel summary
+</code></pre>
+<h4 id="port-security">Port Security</h4>
+<pre><code class="language-bash">configure terminal
+    interface &lt;interface_name&gt;
+        switchport mode access
+        switchport port-security
+
+        # Max MACs (default 1)
+        switchport port-security maximum &lt;number&gt;
+
+        # Violation mode (shutdown, protect, restrict)
+        switchport port-security violation shutdown
+
+        # Learn MACs dynamically (sticky)
+        switchport port-security mac-address sticky
+    exit
+exit
+
+# Verify
+show port-security interface &lt;interface_name&gt;
+
+# Reset interface after violation
+configure terminal
+    interface &lt;interface_name&gt;
+        shutdown
+        no shutdown
+    exit
+</code></pre>
+<h2 id="4-routing-layer-3">4. Routing (Layer 3)</h2>
+<h3 id="basic-routing-commands">Basic Routing Commands</h3>
+<pre><code class="language-bash">show ip route
+</code></pre>
+<h3 id="static-routing">Static Routing</h3>
+<h4 id="static-route">Static Route</h4>
+<pre><code class="language-bash">configure terminal
+    ip route &lt;network&gt; &lt;mask&gt; &lt;next_hop_ip_or_interface&gt; [AD]
+    # Example: ip route 192.168.1.0 255.255.255.0 192.168.30.1
+</code></pre>
+<h4 id="default-static-route">Default Static Route</h4>
+<pre><code class="language-bash">configure terminal
+    ip route 0.0.0.0 0.0.0.0 &lt;next_hop_ip&gt;
+</code></pre>
+<h3 id="inter-vlan-routing">Inter-VLAN Routing</h3>
+<h4 id="router-on-a-stick-roas">Router-on-a-Stick (ROAS)</h4>
+<pre><code class="language-bash">configure terminal
+    interface &lt;interface_name&gt;.&lt;vlan_id&gt;
+        encapsulation dot1q &lt;vlan_id&gt;
+        ip address &lt;ip_address&gt; &lt;subnet_mask&gt;
+    exit
+
+    # Don't forget to enable physical interface
+    interface &lt;interface_name&gt;
+        no shutdown
+    exit
+exit
+</code></pre>
+<h4 id="layer-3-switch">Layer 3 Switch</h4>
+<pre><code class="language-bash">configure terminal
+    ip routing  # Enable routing globally
+
+    # Routed Port (Physical L3 interface)
+    interface &lt;interface_name&gt;
+        no switchport
+        ip address &lt;ip_address&gt; &lt;subnet_mask&gt;
+    exit
+
+    # SVI (Virtual L3 interface for VLAN)
+    interface vlan &lt;vlan_id&gt;
+        ip address &lt;ip_address&gt; &lt;subnet_mask&gt;
+    exit
+
+    # Trunk on switch side
+    interface &lt;interface_name&gt;
+        switchport trunk encapsulation dot1q
+        switchport mode trunk
+    exit
+exit
+</code></pre>
+<h3 id="ripv2">RIPv2</h3>
+<pre><code class="language-bash">configure terminal
+    router rip
+        version 2
+        network &lt;network_address&gt;
+        default-information originate # Propagate default route
+    exit
+exit
+</code></pre>
+<h3 id="ospf">OSPF</h3>
+<h4 id="basic-configuration">Basic Configuration</h4>
+<pre><code class="language-bash">configure terminal
+    router ospf 1
+        # Explicit ID (recommended)
+        router-id 1.1.1.1
+
+        # Network advertisements
+        network 192.168.1.0 0.0.0.255 area 0
+        network 192.168.2.0 0.0.0.255 area 1
+    exit
+
+    # Loopback for stability
+    interface loopback 1
+        ip address 192.168.3.1 255.255.255.255
+    exit
+exit
+
+# Verify
+show ip ospf neighbor
+show ip ospf database
+</code></pre>
+<h4 id="virtual-link-connecting-ospf-areas">Virtual Link (Connecting OSPF Areas)</h4>
+<pre><code class="language-bash">configure terminal
+    router ospf 1
+        # Frontier router (ABR) configuration
+        area 1 virtual-link router_id_of_frontier_router
+    exit
+exit
+
+#### Scenario: Multi-Router RIP Config (R1-R2-R3)
+Example corrected configs for a 3-router chain.
+
+##### R1 (Edge 1)
+
+```bash
+interface Fa0/0
+    ip address 192.168.1.254 255.255.255.0
+interface Se0/0/0
+    ip address 192.168.2.1 255.255.255.0
+router rip
+    version 2
+    network 192.168.1.0
+    network 192.168.2.0
+</code></pre>
+<h5 id="r2-middle">R2 (Middle)</h5>
+<pre><code class="language-bash">interface Se0/0/0
+    ip address 192.168.2.2 255.255.255.0
+interface Se0/0/1
+    ip address 192.168.3.1 255.255.255.0
+router rip
+    version 2
+    network 192.168.2.0
+    network 192.168.3.0
+</code></pre>
+<h5 id="r3-edge-2">R3 (Edge 2)</h5>
+<pre><code class="language-bash">interface Fa0/0
+    ip address 192.168.4.254 255.255.255.0
+interface Se0/0/1
+    ip address 192.168.3.2 255.255.255.0
+router rip
+    version 2
+    network 192.168.3.0
+    network 192.168.4.0
+</code></pre>
+<h2 id="5-network-services">5. Network Services</h2>
+<h3 id="dhcp-dynamic-host-configuration-protocol">DHCP (Dynamic Host Configuration Protocol)</h3>
+<h4 id="dhcp-server-pool">DHCP Server (Pool)</h4>
+<pre><code class="language-bash">configure terminal
+    # Exclude addresses first
+    ip dhcp excluded-address 192.168.1.1 192.168.1.10
+
+    ip dhcp pool &lt;name&gt;
+        network &lt;network_address&gt; &lt;subnet_mask&gt;
+        default-router &lt;gateway_ip&gt;
+        dns-server &lt;dns_server_ip&gt;
+    exit
+exit
+</code></pre>
+<h4 id="dhcp-client">DHCP Client</h4>
+<p>Used when the router interface needs to get an IP from an ISP/WAN.</p>
+<pre><code class="language-bash">configure terminal
+    interface Fa0/0
+        ip address dhcp
+        no shutdown
+    exit
+exit
+</code></pre>
+<h4 id="dhcp-helper-relay">DHCP Helper (Relay)</h4>
+<p>Forward DHCP broadcasts from LAN to a server on a different subnet.</p>
+<pre><code class="language-bash">configure terminal
+    interface Fa0/0
+        ip helper-address &lt;dhcp_server_ip&gt;
+    exit
+exit
+</code></pre>
+<h4 id="dhcp-verification">DHCP Verification</h4>
+<pre><code class="language-bash">show ip dhcp binding
+clear ip dhcp binding &lt;ip_address&gt;
+</code></pre>
+<h4 id="dhcp-snooping-security">DHCP Snooping (Security)</h4>
+<p>Prevents rogue DHCP servers. Trusted ports = Uplinks/Servers. Untrusted = Clients.</p>
+<pre><code class="language-bash">configure terminal
+    ip dhcp snooping
+    ip dhcp snooping vlan 1
+
+    # Trust uplink to legitimate DHCP server
+    interface Fa0/0
+        ip dhcp snooping trust
+    exit
+
+    # Optional: Database for binding persistence
+    # ip dhcp snooping database flash:dhcp_snoop.db
+exit
+
+# Verify
+show ip dhcp snooping
+show ip dhcp snooping binding
+</code></pre>
+<h3 id="nat-network-address-translation">NAT (Network Address Translation)</h3>
+<h4 id="interface-roles">Interface Roles</h4>
+<pre><code class="language-bash">interface &lt;wan_interface&gt;
+  ip nat outside
+interface &lt;lan_interface&gt;
+  ip nat inside
+</code></pre>
+<h4 id="pat-overload">PAT (Overload)</h4>
+<pre><code class="language-bash"># 1. Create ACL matching traffic to translate
+access-list 1 permit 192.168.1.0 0.0.0.255
+
+# 2. Apply NAT Overload
+ip nat inside source list 1 interface &lt;wan_interface&gt; overload
+</code></pre>
+<h4 id="verify-nat">Verify NAT</h4>
+<pre><code class="language-bash">show ip nat translations
+show ip nat statistics
+</code></pre>
+<h3 id="acls-access-control-lists">ACLs (Access Control Lists)</h3>
+<h4 id="standard-acl-1-99">Standard ACL (1-99)</h4>
+<p>Filters based on Source IP only.</p>
+<pre><code class="language-bash">access-list 10 permit 192.168.1.0 0.0.0.255
+access-list 10 deny host 10.1.1.1
+</code></pre>
+<h4 id="extended-acl-100-199">Extended ACL (100-199)</h4>
+<p>Filters based on Protocol, Source, Destination, and Port.</p>
+<pre><code class="language-bash">access-list 100 permit tcp 192.168.1.0 0.0.0.255 host 10.1.1.5 eq 80
+access-list 100 deny ip any any
+</code></pre>
+<h4 id="apply-to-interface">Apply to Interface</h4>
+<pre><code class="language-bash">interface &lt;interface_name&gt;
+    ip access-group &lt;acl_number&gt; &lt;in/out&gt;
+</code></pre>
+<h4 id="verify-acls">Verify ACLs</h4>
+<pre><code class="language-bash">show access-lists
+</code></pre>
+<h3 id="hsrp-redundancy">HSRP (Redundancy)</h3>
+<h4 id="active-router-higher-priority">Active Router (Higher Priority)</h4>
+<pre><code class="language-bash">interface Fa0/0
+    standby 10 ip 192.168.1.100 
+    standby 10 priority 200
+    standby 10 preempt
+</code></pre>
+<h4 id="standby-router">Standby Router</h4>
+<pre><code class="language-bash">interface Fa0/0
+    standby 10 ip 192.168.1.100 
+    standby 10 priority 100
+</code></pre>
+<p>Verify: <code>show standby</code></p>
+<h2 id="6-miscellaneous-lab-tools">6. Miscellaneous &amp; Lab Tools</h2>
+<h3 id="simple-python-http-server">Simple Python HTTP Server</h3>
+<p>Serves files from the current directory.</p>
+<pre><code class="language-bash">sudo python3 -m http.server 80
+</code></pre>
+<h3 id="dnsmasq-simple-dns-server">Dnsmasq (Simple DNS Server)</h3>
+<pre><code>no-resolv
+no-poll
+listen-address=127.0.0.1
+listen-address=192.168.50.100
+address=/cisco.com/192.168.50.225
+</code></pre>
+<h3 id="cisco-packet-tracer-servers">Cisco Packet Tracer Servers</h3>
+<h4 id="service-setup">Service Setup</h4>
+<p>DNS: Create A records (IPs) and MX records (Email).</p>
+<p>Email: Enable SMTP/POP3, set domain, create users.</p>
+<p>HTTP: Edit index.html.</p>
+<p>FTP: Create users with permissions (R/W/D/L).</p>
+<h4 id="ftp-client-commands-pc">FTP Client Commands (PC)</h4>
+<pre><code class="language-bash">ftp &lt;server_ip&gt;
+dir            # List files
+put &lt;filename&gt; # Upload
+get &lt;filename&gt; # Download
+quit
+</code></pre>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../networking-notes/" class="btn btn-neutral float-left" title="Overview"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../configs/interfaces" class="btn btn-neutral float-right" title="interfaces">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../networking-notes/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../configs/interfaces" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
