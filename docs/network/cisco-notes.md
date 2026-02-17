@@ -467,6 +467,16 @@ show ip ospf neighbor
 show ip ospf database
 ```
 
+#### Virtual Link (Connecting OSPF Areas)
+
+```bash
+configure terminal
+    router ospf 1
+        # Frontier router (ABR) configuration
+        area 1 virtual-link router_id_of_frontier_router
+    exit
+exit
+
 #### Scenario: Multi-Router RIP Config (R1-R2-R3)
 Example corrected configs for a 3-router chain.
 
