@@ -476,6 +476,109 @@ configure terminal
         area 1 virtual-link router_id_of_frontier_router
     exit
 exit
+```
+
+### EIGRP
+
+#### Basic Configuration
+
+```bash
+configure terminal
+    router eigrp <as_number>
+        # Explicit Router ID (recommended)
+        eigrp router-id 1.1.1.1
+
+        # Advertise networks
+        network <network_address> <wildcard_mask>
+        # Example: network 192.168.1.0 0.0.0.255
+
+        # Disable auto-summary (recommended for classless routing)
+        no auto-summary
+
+        # Passive interface (stop sending hellos on LAN-only links)
+        passive-interface <interface_name>
+    exit
+exit
+
+# Verify
+show ip eigrp neighbors
+show ip eigrp topology
+show ip route eigrp
+```
+
+#### Authentication
+
+```bash
+configure terminal
+    # Create key chain
+    key chain <chain_name>
+        key 1
+            key-string <password>
+        exit
+    exit
+
+    # Apply to interface
+    interface <interface_name>
+        ip authentication mode eigrp <as_number> md5
+        ip authentication key-chain eigrp <as_number> <chain_name>
+    exit
+exit
+```
+
+#### Redistribution
+
+##### Redistribute Static Routes into EIGRP
+
+```bash
+configure terminal
+    router eigrp <as_number>
+        redistribute static
+    exit
+exit
+```
+
+##### Redistribute OSPF into EIGRP
+
+```bash
+configure terminal
+    router eigrp <as_number>
+        redistribute ospf <ospf_process_id> metric <bandwidth> <delay> <reliability> <load> <mtu>
+        # Example: redistribute ospf 1 metric 10000 100 255 1 1500
+    exit
+exit
+```
+
+##### Redistribute EIGRP into OSPF
+
+```bash
+configure terminal
+    router ospf <ospf_process_id>
+        redistribute eigrp <as_number> subnets
+    exit
+exit
+```
+
+##### Redistribute RIP into EIGRP
+
+```bash
+configure terminal
+    router eigrp <as_number>
+        redistribute rip metric <bandwidth> <delay> <reliability> <load> <mtu>
+        # Example: redistribute rip metric 10000 100 255 1 1500
+    exit
+exit
+```
+
+##### Redistribute Default Route
+
+```bash
+configure terminal
+    router eigrp <as_number>
+        redistribute static
+    exit
+    ip route 0.0.0.0 0.0.0.0 <next_hop_ip>
+exit
+```
 
 #### Scenario: Multi-Router RIP Config (R1-R2-R3)
 Example corrected configs for a 3-router chain.
