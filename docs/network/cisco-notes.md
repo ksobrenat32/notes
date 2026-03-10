@@ -266,6 +266,47 @@ configure terminal
 show interfaces trunk
 ```
 
+#### VTP (VLAN Trunk Protocol)
+
+Synchronizes VLAN databases across switches over trunk links.
+
+**Modes:** Server (create/modify/delete VLANs), Client (receives only), Transparent (forwards but doesn't apply).
+
+##### Configuration
+
+```bash
+configure terminal
+    vtp domain <domain_name>
+    vtp mode <server/client/transparent>
+    vtp password <password>
+    vtp version <1/2/3>
+exit
+```
+
+##### Verification
+
+```bash
+show vtp status
+show vtp counters
+show vtp password
+```
+
+##### Reset VTP Revision Number
+
+To prevent an unwanted switch from overwriting the VLAN database, set it to transparent and back to client/server, or delete `vlan.dat`.
+
+```bash
+# Method 1: Mode toggle
+configure terminal
+    vtp mode transparent
+    vtp mode client
+exit
+
+# Method 2: Delete VLAN database (privileged EXEC)
+delete flash:vlan.dat
+reload
+```
+
 #### MAC Address Table
 
 ```bash
