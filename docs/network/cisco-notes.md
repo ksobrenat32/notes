@@ -75,6 +75,18 @@ configure terminal
 exit
 ```
 
+**Create Users with Privilege Levels**
+
+```sh
+configure terminal
+    username noc_view privilege 1 secret <password>    # Basic user mode
+    username net_ops privilege 5 secret <password>     # Limited operations
+    username net_admin privilege 15 secret <password>  # Full admin
+exit
+```
+
+Default user EXEC level is 1. Privilege level 15 is full privileged EXEC access.
+
 **Secure Passwords**
 
 ```sh
@@ -83,6 +95,106 @@ configure terminal
     service password-encryption # Encrypt all plain text passwords
 exit
 ```
+
+### Authentication Levels & Permissions (AAA)
+
+Use AAA when possible for centralized and more granular authentication/authorization.
+
+#### Enable AAA with Local Database
+
+```sh
+configure terminal
+    aaa new-model
+    aaa authentication login default local
+    aaa authorization exec default local if-authenticated
+exit
+```
+
+This enforces local-user login and applies user privilege after authentication.
+
+#### Privilege Levels (0-15)
+
+- 0: Very limited commands (e.g., disable, enable, logout)
+- 1: User EXEC (default after login)
+- 15: Full privileged EXEC
+- 2-14: Custom levels for restricted operator roles
+
+#### Assign Commands to Custom Privilege Levels
+
+```sh
+configure terminal
+    privilege exec level 5 show running-config
+    privilege exec level 5 show startup-config
+    privilege exec level 5 show ip interface brief
+exit
+```
+
+With this, a user at level 5 can run selected diagnostic commands without full admin access.
+
+#### Command Authorization by Privilege Level
+
+```sh
+configure terminal
+    aaa authorization commands 15 default local
+exit
+```
+
+This can enforce command checks for level-15 commands using the configured method list.
+
+#### Configure Enable Password for Specific Levels
+
+```sh
+configure terminal
+    enable secret level 5 <password_for_level_5>
+    enable secret level 15 <password_for_level_15>
+exit
+```
+
+Users can move between levels with `enable <level>` when permitted.
+
+#### Restrict Remote Access by User Type (Example)
+
+```sh
+configure terminal
+    line vty 0 15
+        login local
+        transport input ssh
+    exit
+exit
+```
+
+Pair this with local users at different privilege levels to control remote admin rights.
+
+#### Verification
+
+```sh
+show running-config | section username
+show privilege
+show aaa methods
+```
+
+### Role-Based CLI Views (Fine-Grained Permissions)
+
+For stricter command-level control than classic privilege levels.
+
+```sh
+configure terminal
+    aaa new-model
+    aaa authentication login default local
+    enable view
+
+    parser view NOC-READONLY
+        secret <view_password>
+        commands exec include show ip interface brief
+        commands exec include show version
+        commands exec include show running-config
+    exit
+
+    username noc_view view NOC-READONLY secret <password>
+exit
+```
+
+This allows a read-only role with only explicitly allowed commands.
 
 ### System Administration
 
