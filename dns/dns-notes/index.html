@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Overview - My Notes</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Overview";
+        var mkdocs_page_input_path = "dns/dns-notes.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> My Notes
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../backup/backup-notes/">Backup</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../cli/cli-notes/">CLI</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../containers/container-notes/">Containers</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">DNS</span></p>
+              <ul class="current">
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Overview</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#dig-utility">Dig utility</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#usage">Usage</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#unbound-dns-server">Unbound dns server</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#basic-configuration">Basic configuration</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#systemd-resolved-configuration">Systemd-resolved configuration</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Configs</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../configs/blocky-config.yml">blocky-config.yml</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../configs/unbound.conf">unbound.conf</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../git/git-notes/">Git</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Network</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../network/networking-notes/">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../network/cisco-notes/">Cisco</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Configs</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../network/configs/interfaces">interfaces</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../network/configs/nftables.conf">nftables.conf</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Sysadmin</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../sysadmin/sysadmin-notes/">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../sysadmin/databases-notes/">Databases</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../sysadmin/erpnext-notes/">ERPNext</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../sysadmin/wordpress-notes/">WordPress</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../sysadmin/selinux-notes/">SELinux</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >CoreOS</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../sysadmin/fedora-coreos/fedora-coreos-notes/">Fedora coreOS</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../sysadmin/fedora-coreos/basic.bu">basic.bu</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Systemd Examples</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../sysadmin/systemd_examples/app.service">app.service</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../sysadmin/systemd_examples/freedns.service">freedns.service</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../sysadmin/systemd_examples/freedns.timer">freedns.timer</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../sysadmin/systemd_examples/rclone.service">rclone.service</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Configs</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../sysadmin/configs/sshd_config">sshd_config</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Scripts</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../sysadmin/scripts/wg-gen.sh">wg-gen.sh</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../virtual-machine/virtual-machine-notes/">Virtual Machine</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../web/web-server-notes/">Web</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">My Notes</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">DNS</li>
+      <li class="breadcrumb-item active">Overview</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="dns-notes">DNS notes</h1>
+<h2 id="dig-utility">Dig utility</h2>
+<p>Dig is a useful tool for querying DNS servers.</p>
+<h3 id="usage">Usage</h3>
+<p><strong>Basic query:</strong></p>
+<pre><code class="language-sh">dig example.com
+</code></pre>
+<p><strong>Query specific record type:</strong></p>
+<pre><code class="language-sh">dig example.com A
+dig example.com MX
+dig example.com TXT
+</code></pre>
+<p><strong>Query using a specific DNS server:</strong></p>
+<pre><code class="language-sh">dig @1.1.1.1 example.com
+</code></pre>
+<p><strong>Query with +short for concise output:</strong></p>
+<pre><code class="language-sh">dig example.com +short
+</code></pre>
+<h2 id="unbound-dns-server">Unbound dns server</h2>
+<p>Unbound is a validating, recursive, and caching DNS resolver.</p>
+<h3 id="basic-configuration">Basic configuration</h3>
+<p>For a recursive dns server you need to be able to resolve from the root servers,
+ for that you need the root hints file.</p>
+<p><strong>Get root hints:</strong></p>
+<pre><code class="language-sh">wget -S -N https://www.internic.net/domain/named.cache -O /etc/unbound/root.hints
+# or with curl
+curl -fsSL -o /etc/unbound/root.hints https://www.internic.net/domain/named.cache
+</code></pre>
+<blockquote>
+<p>You should have a cronjob running for this every month (as root)s</p>
+</blockquote>
+<h2 id="systemd-resolved-configuration">Systemd-resolved configuration</h2>
+<p>If you need to be able to bind port 53 with systemd-resolved enabled,
+ you need to configure systemd-resolved to listen on another port
+ besides 53, for example 5353, and then configure unbound or blocky</p>
+<ol>
+<li>Edit /etc/systemd/resolved.conf</li>
+</ol>
+<pre><code class="language-sh">[Resolve]
+DNS=9.9.9.9 8.8.8.8
+DNSStubListener=no
+</code></pre>
+<ol>
+<li>Restart systemd-resolved</li>
+</ol>
+<pre><code class="language-sh">sudo systemctl restart systemd-resolved
+</code></pre>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../../containers/container-notes/" class="btn btn-neutral float-left" title="Containers"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../configs/blocky-config.yml" class="btn btn-neutral float-right" title="blocky-config.yml">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../../containers/container-notes/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../configs/blocky-config.yml" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

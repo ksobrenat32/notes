@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Backup - My Notes</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Backup";
+        var mkdocs_page_input_path = "backup/backup-notes.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> My Notes
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">Backup</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#utilities">Utilities</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#tar">Tar</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#usage">Usage</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#gpg">GPG</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#usage_1">Usage</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#rsync">Rsync</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#usage_2">Usage</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#btrfs">Btrfs</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#usage_3">Usage</a>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../cli/cli-notes/">CLI</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../containers/container-notes/">Containers</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">DNS</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../dns/dns-notes/">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Configs</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../dns/configs/blocky-config.yml">blocky-config.yml</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../dns/configs/unbound.conf">unbound.conf</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../git/git-notes/">Git</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Network</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../network/networking-notes/">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../network/cisco-notes/">Cisco</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Configs</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../network/configs/interfaces">interfaces</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../network/configs/nftables.conf">nftables.conf</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Sysadmin</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../sysadmin/sysadmin-notes/">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../sysadmin/databases-notes/">Databases</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../sysadmin/erpnext-notes/">ERPNext</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../sysadmin/wordpress-notes/">WordPress</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../sysadmin/selinux-notes/">SELinux</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >CoreOS</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../sysadmin/fedora-coreos/fedora-coreos-notes/">Fedora coreOS</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../sysadmin/fedora-coreos/basic.bu">basic.bu</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Systemd Examples</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../sysadmin/systemd_examples/app.service">app.service</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../sysadmin/systemd_examples/freedns.service">freedns.service</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../sysadmin/systemd_examples/freedns.timer">freedns.timer</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../sysadmin/systemd_examples/rclone.service">rclone.service</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Configs</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../sysadmin/configs/sshd_config">sshd_config</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Scripts</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../sysadmin/scripts/wg-gen.sh">wg-gen.sh</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../virtual-machine/virtual-machine-notes/">Virtual Machine</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../web/web-server-notes/">Web</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">My Notes</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Backup</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="backup-notes">Backup Notes</h1>
+<h2 id="utilities">Utilities</h2>
+<h3 id="tar">Tar</h3>
+<p>Tar is great for creating archives of multiple directories or files into a single file.
+ It also supports compression and can be combined with other tools for encryption
+ and integrity checks.</p>
+<h4 id="usage">Usage</h4>
+<p><strong>Compressing directories into a .txz archive:</strong></p>
+<pre><code class="language-sh">tar -cJf file.txz /path/to/directorie/1 /path/to/directorie/2
+</code></pre>
+<ul>
+<li>Use "-J" to use the xz protocol.</li>
+<li>Use "-cf" to create a new file.</li>
+</ul>
+<p><strong>Using multithreading compression:</strong></p>
+<pre><code class="language-sh">tar -cf - /path/to/directorie/1 /path/to/directorie/2 | xz -z -T0 -9 &gt; file.txz
+</code></pre>
+<ul>
+<li>"-T0" uses all available CPU cores.</li>
+<li>"-9" is the maximum compression level.</li>
+</ul>
+<p><strong>Extracting an archive:</strong></p>
+<pre><code class="language-sh">tar -xJf file.txz
+</code></pre>
+<h3 id="gpg">GPG</h3>
+<p>GPG can be used to encrypt files for secure storage or transfer.</p>
+<h4 id="usage_1">Usage</h4>
+<p><strong>Create a keypair:</strong></p>
+<pre><code class="language-sh">gpg --full-generate-key
+</code></pre>
+<p><strong>Get key information:</strong></p>
+<pre><code class="language-sh">gpg --list-keys
+</code></pre>
+<p>For the key ID, use the long format (16 characters).</p>
+<pre><code class="language-sh">gpg --list-keys --keyid-format LONG
+</code></pre>
+<p><strong>Export public key:</strong></p>
+<pre><code class="language-sh">gpg --export --armor &lt;recipient_key_id&gt; &gt; publickey.asc
+</code></pre>
+<p><strong>Import public key:</strong></p>
+<pre><code class="language-sh">gpg --import publickey.asc
+</code></pre>
+<p><strong>Export secret key for backup:</strong></p>
+<pre><code class="language-sh">gpg -o private-backup.gpg --export-options backup --export-secret-keys &lt;email_or_key_id&gt;
+</code></pre>
+<p><strong>Import the backup key:</strong></p>
+<pre><code class="language-sh">gpg --import-options restore --import private-backup.gpg
+
+gpg --edit-key username@example.com
+
+&gt; trust
+&gt; 5 (ultimately)
+&gt; save
+</code></pre>
+<p><strong>Encrypt a file with a recipient</strong></p>
+<pre><code class="language-sh">gpg --encrypt --recipient &lt;recipient_key_id&gt; file
+</code></pre>
+<p><strong>Decrypt a file</strong></p>
+<pre><code class="language-sh">gpg --decrypt file.gpg &gt; file
+</code></pre>
+<p><strong>Encrypt a file with password</strong></p>
+<pre><code class="language-sh">gpg --encrypt --symmetric file
+</code></pre>
+<h3 id="rsync">Rsync</h3>
+<p>Rsync is a powerful tool for synchronizing files and directories between two locations,
+ either locally or over a network.</p>
+<h4 id="usage_2">Usage</h4>
+<pre><code class="language-sh">rsync -arzuvhP /path/to/source /path/to/destiny
+</code></pre>
+<ul>
+<li>"a" for archive mode</li>
+<li>"r" for recursive</li>
+<li>"z" for compression on transit (useful in network)</li>
+<li>"u" for skipping files newer on receiver</li>
+<li>"v" for verbose</li>
+<li>"h" for human readable</li>
+<li>
+<p>"P" for progress</p>
+</li>
+<li>
+<p>"c" for checksum</p>
+</li>
+<li>
+<p>"i" for showing changes in a verbose mode</p>
+</li>
+<li>
+<p>"--ignore-existing" for leaving untouched the files on destination</p>
+</li>
+<li>"-delete" for deleting files on destination</li>
+</ul>
+<blockquote>
+<p>"-n" for dry run</p>
+</blockquote>
+<p>When using -i (--itemize-changes) the output of the changes will be
+ more verbose of why the changes are being done, running it with
+ --dry-run is a secure practice in case you want to use -delete, the
+ output description is:</p>
+<pre><code class="language-sh">YXcstpoguax  path/to/file
+|||||||||||
+`----------- the type of update being done::
+ ||||||||||   &lt;: file is being transferred to the remote host (sent).
+ ||||||||||   &gt;: file is being transferred to the local host (received).
+ ||||||||||   c: local change/creation for the item, such as:
+ ||||||||||      - the creation of a directory
+ ||||||||||      - the changing of a symlink,
+ ||||||||||      - etc.
+ ||||||||||   h: the item is a hard link to another item (requires --hard-links).
+ ||||||||||   .: the item is not being updated (though it might have attributes that are being modified).
+ ||||||||||   *: means that the rest of the itemized-output area contains a message (e.g. &quot;deleting&quot;).
+ ||||||||||
+ `---------- the file type:
+  |||||||||   f for a file,
+  |||||||||   d for a directory,
+  |||||||||   L for a symlink,
+  |||||||||   D for a device,
+  |||||||||   S for a special file (e.g. named sockets and fifos).
+  |||||||||
+  `--------- c: different checksum (for regular files)
+   ||||||||     changed value (for symlink, device, and special file)
+   `-------- s: Size is different
+    `------- t: Modification time is different
+     `------ p: Permission are different
+      `----- o: Owner is different
+       `---- g: Group is different
+        `--- u: The u slot is reserved for future use.
+         `-- a: The ACL information changed
+</code></pre>
+<h3 id="btrfs">Btrfs</h3>
+<p>Btrfs is a modern filesystem that supports advanced features like snapshots,
+subvolumes, and built-in RAID support. It is well-suited for backup solutions
+due to its snapshot capabilities and efficient storage management.</p>
+<h4 id="usage_3">Usage</h4>
+<p><strong>Format a partition with Btrfs:</strong></p>
+<pre><code class="language-bash">sudo mkfs.btrfs /dev/sdXn
+</code></pre>
+<p><strong>To mount a Btrfs filesystem:</strong></p>
+<pre><code class="language-bash">sudo mount -o options -t btrfs /dev/sdXn /mnt/point
+</code></pre>
+<p>Options can include:</p>
+<ul>
+<li>"compress=zstd" for compression (also supported: lzo, zlis)</li>
+<li>"noatime" to disable access time updates</li>
+<li>"subvol=subvolume_name" to mount a specific subvolume</li>
+<li>"space_cache=v2" for improved space cache management</li>
+<li>"autodefrag" to enable automatic defragmentation</li>
+</ul>
+<p><strong>Taking a snapshot:</strong></p>
+<pre><code class="language-bash">sudo btrfs subvolume snapshot -r /mnt/point/subvolume /mnt/point/snapshot_name
+</code></pre>
+<p><strong>Sending a snapshot to another location:</strong></p>
+<pre><code class="language-bash">sudo btrfs send /mnt/point/snapshot_name | sudo btrfs receive /mnt/dest/point
+</code></pre>
+<p><strong>Sending an incremental snapshot:</strong></p>
+<pre><code class="language-bash">sudo btrfs send -p /mnt/point/snapshot_previous /mnt/point/snapshot_new | sudo btrfs receive /mnt/dest/point
+</code></pre>
+<p><strong>Delete a snapshot:</strong></p>
+<pre><code class="language-bash">sudo btrfs subvolume delete /mnt/point/snapshot_name
+</code></pre>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../.." class="btn btn-neutral float-left" title="Home"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../../cli/cli-notes/" class="btn btn-neutral float-right" title="CLI">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../.." style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../../cli/cli-notes/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
