@@ -370,6 +370,7 @@ configure terminal
 ```bash
 configure terminal
     interface <interface_name>
+        switchport trunk encapsulation dot1q # Often required on Layer 3 switches
         switchport mode trunk
         switchport trunk allowed vlan <vlan_list> # Optional e.g., 5,7
     exit
@@ -620,6 +621,32 @@ show ip ospf neighbor
 show ip ospf database
 ```
 
+#### OSPF Default Route Propagation
+
+```bash
+configure terminal
+    router ospf 1
+        default-information originate
+    exit
+exit
+```
+
+#### OSPF Authentication (MD5)
+
+```bash
+configure terminal
+    router ospf 1
+        # Enable MD5 authentication for the area
+        area 0 authentication message-digest
+    exit
+    
+    # Configure the key on the interface
+    interface <interface_name>
+        ip ospf message-digest-key 1 md5 <password>
+    exit
+exit
+```
+
 #### Virtual Link (Connecting OSPF Areas)
 
 ```bash
@@ -775,6 +802,32 @@ router rip
     network 192.168.4.0
 ```
 
+### Policy-Based Routing (PBR)
+
+Used to override the routing table and direct traffic based on specific policies (e.g., source IP, destination IP, protocol).
+
+```bash
+configure terminal
+    # 1. Create an ACL to match the interesting traffic
+    access-list 105 permit ip host 192.168.13.1 host 4.4.4.4
+
+    # 2. Create a route-map to set the next-hop for matching traffic
+    route-map <map_name> permit 10
+        match ip address 105
+        set ip next-hop 192.168.35.2
+    exit
+
+    # 3. Apply the route-map to the incoming interface
+    interface <interface_name>
+        ip policy route-map <map_name>
+    exit
+exit
+
+# Verify
+show route-map
+show ip policy
+```
+
 ## 5. Network Services
 
 ### DHCP (Dynamic Host Configuration Protocol)
@@ -863,8 +916,9 @@ interface <lan_interface>
 #### PAT (Overload)
 
 ```bash
-# 1. Create ACL matching traffic to translate
+# 1. Create ACL matching traffic to translate (multiple statements allowed)
 access-list 1 permit 192.168.1.0 0.0.0.255
+access-list 1 permit 192.168.10.0 0.0.0.255
 
 # 2. Apply NAT Overload
 ip nat inside source list 1 interface <wan_interface> overload
