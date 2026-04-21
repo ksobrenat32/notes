@@ -1,0 +1,40 @@
+# Blocky is a DNS proxy and ad-blocker for the local network written in Go.
+# Config by ksobrenatural
+# https://github.com/0xERR0R/blocky
+upstream:
+  default:
+    ## Using local unbound
+    - 127.0.0.1:5353
+blocking:
+  blackLists:
+    ads:
+    # General Blocklists
+      - https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts
+      - https://blocklistproject.github.io/Lists/abuse.txt 
+      - https://blocklistproject.github.io/Lists/ads.txt 
+      - https://blocklistproject.github.io/Lists/crypto.txt 
+      - https://blocklistproject.github.io/Lists/drugs.txt 
+      - https://blocklistproject.github.io/Lists/fraud.txt 
+      - https://blocklistproject.github.io/Lists/gambling.txt 
+      - https://blocklistproject.github.io/Lists/malware.txt 
+      - https://blocklistproject.github.io/Lists/phishing.txt 
+      - https://blocklistproject.github.io/Lists/porn.txt 
+      - https://blocklistproject.github.io/Lists/ransomware.txt 
+      - https://blocklistproject.github.io/Lists/scam.txt 
+      - https://blocklistproject.github.io/Lists/tiktok.txt 
+      - https://blocklistproject.github.io/Lists/tracking.txt 
+      - https://github.com/kboghdady/youTube_ads_4_pi-hole/blob/master/youtubelist.txt 
+  clientGroupsBlock:
+    default:
+      - ads
+  # Return 0.0.0.0 if in add list
+  blockType: zeroIp
+# Disable logs
+queryLog:
+  type: none
+customDNS:
+  mapping:
+    # Use custom DNS entries
+    example.lan: 10.0.0.1
+# DNS port
+port: 53
