@@ -112,6 +112,36 @@ exit
 
 This enforces local-user login and applies user privilege after authentication.
 
+#### External AAA Servers (RADIUS / TACACS+)
+
+Configure the device to use external servers for authentication, falling back to other methods (like the local database) if the primary server is unreachable.
+
+**RADIUS Configuration**
+```bash
+configure terminal
+    aaa new-model
+    # Try RADIUS first, then fall back to local database
+    aaa authentication login default group radius local
+    
+    # Define RADIUS server and shared secret key
+    radius-server host <ip_address>
+    radius-server key <secret_key>
+exit
+```
+
+**TACACS+ Configuration**
+```bash
+configure terminal
+    aaa new-model
+    # Try TACACS+ first, then RADIUS, then local database
+    aaa authentication login default group tacacs+ group radius local
+    
+    # Define TACACS+ server and shared secret key
+    tacacs-server host <ip_address>
+    tacacs-server key <secret_key>
+exit
+```
+
 #### Privilege Levels (0-15)
 
 - 0: Very limited commands (e.g., disable, enable, logout)
